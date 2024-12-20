@@ -29,7 +29,9 @@ class DataExportRequestState(RichIntEnum):
     failed = 3
     expired = 4  # The associated file has been deleted
 
-#TODO addition by Steve Hoffmann in titles removing Room and replace to Resource
+# TODO addition by SH in titles removing Room and replace to Resource
+
+
 class DataExportOptions(RichStrEnum):
     __titles__ = {
         'personal_data': _('Personal data'),

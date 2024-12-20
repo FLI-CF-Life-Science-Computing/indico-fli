@@ -74,7 +74,9 @@ def _get_extra_user_prefs(sender, **kwargs):
     if config.ENABLE_ROOMBOOKING:
         return RBUserPreferences
 
-#TODO addition by Steve Hoffmann Room replace
+# TODO addition by SH Room replace
+
+
 @signals.menu.items.connect_via('admin-sidemenu')
 def _extend_admin_menu(sender, **kwargs):
     if config.ENABLE_ROOMBOOKING and session.user.is_admin:
@@ -82,13 +84,15 @@ def _extend_admin_menu(sender, **kwargs):
         return SideMenuItem('rb', _('Resource booking'), url, 70, icon='location')
 
 
-#TODO addition by Steve Hoffmann Room replace
+# TODO addition by SH Room replace
 @signals.menu.items.connect_via('top-menu')
 def _topmenu_items(sender, **kwargs):
     if config.ENABLE_ROOMBOOKING and rb_check_if_visible(session.user):
         yield TopMenuItem('room_booking', _('Resource booking'), url_for('rb.roombooking'), 80)
 
-#TODO addition by Steve Hoffmann Room replace
+# TODO addition by SH Room replace
+
+
 @signals.menu.items.connect_via('event-management-sidemenu')
 def _sidemenu_items(sender, event, **kwargs):
     if config.ENABLE_ROOMBOOKING and event.can_manage(session.user):
@@ -123,7 +127,9 @@ def _event_deleted(event, user, **kwargs):
             link.reservation_occurrence.cancel(user or session.user, 'Associated event was deleted')
 
 
-#TODO addition by Steve Hoffmann Room replace
+# TODO addition by SH Room replace
+
+
 class BookPermission(ManagementPermission):
     name = 'book'
     friendly_name = pgettext('Booking permission name', 'Book')
@@ -132,7 +138,9 @@ class BookPermission(ManagementPermission):
     color = 'green'
 
 
-#TODO addition by Steve Hoffmann Room replace
+# TODO addition by SH Room replace
+
+
 class PrebookPermission(ManagementPermission):
     name = 'prebook'
     friendly_name = pgettext('Booking permission name', 'Prebook')
@@ -142,7 +150,9 @@ class PrebookPermission(ManagementPermission):
     color = 'orange'
 
 
-#TODO addition by Steve Hoffmann Room replace
+# TODO addition by SH Room replace
+
+
 class OverridePermission(ManagementPermission):
     name = 'override'
     friendly_name = pgettext('Booking permission name', 'Override')
@@ -151,7 +161,9 @@ class OverridePermission(ManagementPermission):
     color = 'pink'
 
 
-#TODO addition by Steve Hoffmann Room replace
+# TODO addition by SH Room replace
+
+
 class ModeratePermission(ManagementPermission):
     name = 'moderate'
     friendly_name = pgettext('Booking permission name', 'Moderate')

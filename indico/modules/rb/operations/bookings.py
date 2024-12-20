@@ -333,8 +333,10 @@ def create_booking_for_event(room_id, event):
         start_dt = event.start_dt.astimezone(default_timezone).replace(tzinfo=None)
         end_dt = event.end_dt.astimezone(default_timezone).replace(tzinfo=None)
         booking_reason = f"Event '{event.title}'"
-        data = {'event_id': event.id, 'start_dt': start_dt, 'end_dt': end_dt, 'booked_for_user': event.creator,
-                'booking_reason': booking_reason, 'repeat_frequency': RepeatFrequency.NEVER, 'service': service, 'funding':funding}
+        funding = f"Event '{event.title}'" 
+	data = {'event_id': event.id, 'start_dt': start_dt, 'end_dt': end_dt, 'booked_for_user': event.creator,
+                'booking_reason': booking_reason, 'repeat_frequency': RepeatFrequency.NEVER, 'service': service,
+		 'funding': funding}
         if start_dt.date() != end_dt.date():
             data |= {'repeat_frequency': RepeatFrequency.DAY, 'repeat_interval': 1}
         reservation = Reservation.create_from_data(room, data, session.user, ignore_admin=True)
@@ -342,8 +344,8 @@ def create_booking_for_event(room_id, event):
             occurrence.linked_object = event
         return reservation
     except NoReportError:
-        flash(_('Booking could not be created. Probably somebody else booked the room in the meantime.'), 'error')
-        return None
+       flash(_('Booking could not be created. Probably somebody else booked the room in the meantime.'), 'error')
+       return None
 
 
 def get_active_bookings(limit, start_dt, last_reservation_id=None, **filters):

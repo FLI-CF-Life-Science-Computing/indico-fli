@@ -200,9 +200,9 @@ class BookRoomHook(HTTPAPIHook):
         elif self._room.can_prebook(user):
             raise HTTPAPIError('The API only supports direct bookings but this room only allows pre-bookings.')
         return False
-
-    #TODO addition by Steve Hoffmann of funding source - not sure if needed
-    #TODO addition by Steve Hoffmann of service - not sure if needed
+    # TODO addition by Steve Hoffmann of funding source - not sure if needed
+    # TODO addition by Steve Hoffmann of service - not sure if needed
+    
     def api_roomBooking(self, user):
         data = MultiDict({
             'start_dt': self._params['from'],

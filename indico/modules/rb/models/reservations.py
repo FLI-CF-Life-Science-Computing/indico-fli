@@ -177,17 +177,17 @@ class Reservation(db.Model):
         db.Text,
         nullable=False
     )
-    #TODO addition by Steve Hoffmann for funding source
-    #updating data base model https://docs.getindico.io/en/stable/plugins/models/
-    #see README in root dir
+    # TODO addition by SH for funding source
+    # updating data base model https://docs.getindico.io/en/stable/plugins/models/
+    # see README in root dir
     funding = db.Column(
         db.Text,
         nullable=True,
         default=''
     )
-    #TODO addition by Steve Hoffmann for service request
-    #updating data base model https://docs.getindico.io/en/stable/plugins/models/
-    #see README in root dir
+    # TODO addition by SH for service request
+    # updating data base model https://docs.getindico.io/en/stable/plugins/models/
+    # see README in root dir
     service = db.Column(
         db.Boolean,
         nullable=True,
@@ -289,11 +289,12 @@ class Reservation(db.Model):
     def links(self):
         return [x.link for x in self.occurrences if x.link]
 
-    #TODO addition by Steve Hoffmann to always add internal notes to data base original force_internal_note=False
+    # TODO addition by SH to always add internal notes to data base original force_internal_note=False
     def __repr__(self):
-        return format_repr(self, 'id', 'room_id', 'start_dt', 'end_dt', 'state', 'service', 'funding', _text=self.booking_reason)
+        return format_repr(self, 'id', 'room_id', 'start_dt', 'end_dt', 'state', 'service', 'funding',
+		_text=self.booking_reason)
 
-    #TODO addition by Steve Hoffmann to always add internal notes to data base original force_internal_note=False
+    # TODO addition by SH to always add internal notes to data base original force_internal_note=False
     @classmethod
     def create_from_data(cls, room, data, user, *, prebook=None, ignore_admin=False, force_internal_note=True):
         """Create a new reservation.
@@ -308,7 +309,7 @@ class Reservation(db.Model):
         """
         from indico.modules.rb import rb_settings
 
-    #TODO addition by Steve Hoffmann to always add internal notes to data base original force_internal_note=False
+    # TODO addition by SH to always add internal notes to data base original force_internal_note=False
         populate_fields = {'start_dt', 'end_dt', 'repeat_frequency', 'repeat_interval', 'room_id',
                            'booking_reason', 'service', 'funding', 'recurrence_weekdays'}
         if data['repeat_frequency'] == RepeatFrequency.NEVER and data['start_dt'].date() != data['end_dt'].date():
@@ -592,7 +593,7 @@ class Reservation(db.Model):
         :param extra_fields: A dict containing the extra fields data from the schema
         """
         from indico.modules.rb import rb_settings
-        #TODO addition by Steve Hoffmann to send back service and funding fields
+        # TODO addition by SH to send back service and funding fields
         populate_fields = {'start_dt', 'end_dt', 'repeat_frequency', 'repeat_interval', 'recurrence_weekdays',
                            'booked_for_user', 'booking_reason', 'service', 'funding'}
         # fields affecting occurrences
@@ -610,7 +611,7 @@ class Reservation(db.Model):
             'repetition': 'booking type',
             'booked_for_user': "'Booked for' user",
             'booking_reason': 'booking reason',
-             #TODO addition by Steve Hoffmann to pretty print service and funding fields in log
+            # TODO addition by SH to pretty print service and funding fields in log
             'funding': 'funding',
             'service': 'Service requested',
         }
