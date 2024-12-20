@@ -53,9 +53,11 @@ function validate({usage, user, reason}, requireReason) {
   if (usage === 'someone' && !user) {
     errors.user = Translate.string('Please specify a user');
   }
+  //TODO alternative by Steve Hoffmann changing reason to reasontxt to override value with concat
   if (requireReason && !reason) {
     errors.reason = Translate.string('You need to provide a reason');
   }
+  //TODO alternative by Steve Hoffmann changing reason to reasontxt to override value with concat
   if (reason && reason.length < 3) {
     errors.reason = Translate.string('Reason must be at least 3 characters');
   }
@@ -104,7 +106,7 @@ class BookRoomModal extends React.Component {
     timeInformationComponent: TimeInformation,
     link: null,
     defaultTitles: {
-      booking: <Translate>Create Booking</Translate>,
+      booking: <Translate>Create Ressource Booking</Translate>,
       preBooking: <Translate>Create Pre-booking</Translate>,
     },
     bookingGracePeriod: null,
@@ -115,7 +117,7 @@ class BookRoomModal extends React.Component {
     bookingConflictsVisible: false,
     booking: null,
     selectedEvent: null,
-    extraFields: null,
+    extraFields: null, 
   };
 
   componentDidMount() {
@@ -525,6 +527,7 @@ class BookRoomModal extends React.Component {
       </BookingObjectLink>
     );
   }
+   
 
   render() {
     const {
@@ -536,13 +539,13 @@ class BookRoomModal extends React.Component {
       link,
       bookingReasonRequired,
       isAdminOverrideEnabled,
-      bookingGracePeriod,
+      bookingGracePeriod,  
     } = this.props;
 
     if (!room) {
       return null;
     }
-
+   
     const requireReason =
       {always: true, never: false, not_for_events: !link}[bookingReasonRequired] ?? true;
     const {skipConflicts, bookingConflictsVisible} = this.state;
@@ -595,7 +598,7 @@ class BookRoomModal extends React.Component {
                     <FinalRadio
                       name="usage"
                       value="myself"
-                      label={Translate.string("I'll be using it myself")}
+                      label={Translate.string("I'm booking for myself")}
                       disabled={fprops.submitSucceeded}
                     />
                     <FinalRadio
@@ -619,13 +622,44 @@ class BookRoomModal extends React.Component {
                       )}
                     </FavoritesProvider>
                   </FieldCondition>
+    
+                  {/*TODO alternative by Steve Hoffmann replace reason with reasontxt*/}
                   <FinalTextArea
                     name="reason"
                     nullIfEmpty
-                    placeholder={Translate.string('Reason for booking')}
+                    placeholder={Translate.string('Booking purpose (required field)')}
                     disabled={fprops.submitSucceeded}
-                    required={requireReason}
+                    required={requireReason}  
                   />
+                  {/*TODO addition by Steve Hoffmann third party (service)*/}
+                  <Form.Group styleName="usage-radio">
+                    <FinalRadio
+                      name="service"
+                      value="false"
+                      label={Translate.string("in-house project")}
+                      disabled={fprops.submitSucceeded}  
+                    />
+                    <FinalRadio
+                      name="service"
+                      value="true"
+                      label={Translate.string("third-party project")}
+                      disabled={fprops.submitSucceeded}
+                    /> 
+            </Form.Group>
+      {/*TODO addition by Steve Hoffmann request for funding source */} 
+                  
+                  <FieldCondition when="service" is="true">
+                   <div style={{ marginTop: '15px' }}>
+                  <FinalTextArea
+                    name="funding"
+                    //nullIfEmpty
+                    placeholder={Translate.string('External funding source (Grant number or ID)')}
+                    disabled={fprops.submitSucceeded}
+                    required={false} 
+                  /> 
+                 </div>
+                  </FieldCondition>
+
                 </Segment>
                 {renderPluginComponents('rb-booking-form-extra-fields', {
                   room,
@@ -658,7 +692,9 @@ class BookRoomModal extends React.Component {
                     <Translate as="p">
                       Internal notes about the booking are only visible to room managers.
                     </Translate>
-                    <FinalTextArea name="internalNote" disabled={fprops.submitSucceeded} />
+
+                  {/*TODO alternative by Steve Hoffmann replace internal with internaltxt*/}
+                    <FinalTextArea name="internaltxt" disabled={fprops.submitSucceeded} />
                   </Segment>
                 </Form>
               )}
@@ -716,7 +752,8 @@ class BookRoomModal extends React.Component {
           validate={values => validate(values, requireReason)}
           decorators={[formDecorator]}
           render={renderModalContent}
-          initialValues={{user: null, linkBack, extraFields: null}}
+          //TODO alternative by Steve Hoffmann: replace reason with reasontxt
+          initialValues={{usage: 'myself', user: null, linkBack, extraFields: null, service:'false', reason: '', funding: ''}}
           subscription={{
             submitSucceeded: true,
             submitError: true,
@@ -754,7 +791,15 @@ export default connect(
         fetchRelatedEvents: actions.fetchRelatedEvents,
         resetRelatedEvents: actions.resetRelatedEvents,
         createBooking: (data, props) => {
-          const {reason, internalNote, usage, user, linkType, linkId, linkBack, extraFields} = data;
+         
+          //TODO replacing reason with reasontxt and overriding reason by Steve Hoffmann to transfer funding and service info 
+          //to piggy back information in the reason field. This is an ugly hack alternative but may be necessary to use
+          //if db-variant fails to work. HOWTO: replace reason by reasontxt and internalNote by internaltxt above and
+          //concat values.
+          const {reason, internaltxt, usage, service, funding, user, linkType, linkId, linkBack, extraFields} = data;
+
+          //const reason = `${reasontxt}`
+          const internalNote = `${internaltxt}`;//`${internaltxt};funding=${funding};service=${service}`;
           const {
             bookingData: {recurrence, dates, recurrenceWeekdays, timeSlot, isPrebooking},
             room,
@@ -765,6 +810,8 @@ export default connect(
               reason,
               internalNote,
               usage,
+              service,
+              funding, 
               user,
               recurrence,
               recurrenceWeekdays,

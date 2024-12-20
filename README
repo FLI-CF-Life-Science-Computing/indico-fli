@@ -1,0 +1,117 @@
+
+https://docs.getindico.io/en/latest/installation/development/
+brew services start postgresql@14
+brew services start redis
+brew services stop redis
+brew services stop postgresql@14
+brew services list
+
+createdb indico_template -O $USER
+psql indico_template -c "CREATE EXTENSION unaccent; CREATE EXTENSION pg_trgm;"
+createdb indico -T indico_template
+
+#RUNNING 2 programs afer activation simultaneously
+
+source ./env/bin/activate
+cd src
+./bin/maintenance/build-assets.py indico --dev --watch &; indico run -h localhost -q --enable-evalex
+
+#server running on
+http://localhost:8000/
+
+#data base access via
+psql indico
+
+#on upgrades of data base schemas https://docs.getindico.io/en/stable/installation/upgrade/
+Some versions may include database schema upgrades. Make sure to perform them immediately after upgrading. If there are no schema changes, the command will simply do nothing.
+This is necessary after data base schemas have been modified. Here, we have altered reservations.
+
+indico db migrate
+indico db upgrade
+indico db --all-plugins upgrade
+
+
+
+#room booking module is here ./src/indico/modules/rb
+#room booking mask is here: src/indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx, use jsx to modify webpage for booking
+#room booking client side (POST) is located in src/indico/modules/rb/client/js/modules/bookRoom/serializers.js
+#room booking server side is located here src/indico/modules/rb//models/reservations.py
+
+
+
+#Summary
+
+## Client side
+
+I have added the additional fields 'funding' (FinalTextArea) and 'service' (radio, bool) in BookRoomModal.jsx (src/indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx) to display the radios and text areas. Subsequently, these fields were registered in the serializer.js (src/indico/modules/rb/client/js/modules/bookRoom/serializers.js) to post this to the web server.
+
+There are two forms. One for making the booking (src/indico/modules/rb/client/js/common/bookings/BookingEdit.jsx) and one for changing it. The later is somewhat divided into to jsx (src/indico/modules/rb/client/js/common/bookings/BookingEdit.jsx and /src/indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx).
+
+
+
+## Server side
+On the server side, the db schema has been altered to extract and store the additional information in the data base. 
+
+This is an example of the addition made to src/indico/modules/rb//models/reservations.py
+
+   #TODO addition by Steve Hoffmann for funding source
+     #updating data base model https://docs.getindico.io/en/stable/plugins/models/
+     funding = db.Column(
+         db.Text,
+         nullable=True,
+         default=''
+     )
+
+The data base is build using alembric. Thus, modifications need to be added via `indico db migrate`, creating some form of diff, followed by indico db upgrade to finalize the changes to the data base. 
+
+
+In the first attempt I had difficulties with the text field that was originally set to `nullable=False` creating an error. Subsequently, I needed to grep for the error-producing diff-file created by `indico db migrate`, altered it directly to `nullable=True`, upgraded successfully with `indico db upgrade`, altered the code in reservations.py to reflect the change, migrated and upgraded again. 
+
+This may have been caused by the nullIfEmpty (now removed where comment) in the BookRoomModal.jsx.
+
+    {/*TODO addition by Steve Hoffmann request for funding source */} 
+                  <FinalTextArea
+                    name="funding"
+                    //nullIfEmpty
+                    placeholder={Translate.string('External funding source')}
+                    disabled={fprops.submitSucceeded}
+                    required={false} 
+                  />             
+
+The existence of the added fields was confirmed and it is stored properly in the data base table
+roombooking.reservations (SELECT * from roombooking.reservations;)
+
+
+
+## List of changes
+
+grep -r Steve indico/__init__.py indico/__pycache__ indico/cli indico/core indico/global.d.ts indico/indico.conf indico/legacy indico/logging.yaml indico/logging.yaml.sample indico/migrations indico/modules indico/moment_locales.yaml indico/testing indico/util indico/vendor
+indico/modules/rb/models/reservations.py:    #TODO addition by Steve Hoffmann for funding source
+indico/modules/rb/models/reservations.py:    #TODO addition by Steve Hoffmann for service request
+indico/modules/rb/models/reservations.py:    #TODO addition by Steve Hoffmann to always add internal notes to data base original force_internal_note=False
+indico/modules/rb/models/reservations.py:    #TODO addition by Steve Hoffmann to always add internal notes to data base original force_internal_note=False
+indico/modules/rb/models/reservations.py:    #TODO addition by Steve Hoffmann to always add internal notes to data base original force_internal_note=False
+indico/modules/rb/models/reservations.py:        #TODO addition by Steve Hoffmann to send back service and funding fields
+indico/modules/rb/models/reservations.py:             #TODO addition by Steve Hoffmann to pretty print service and funding fields in log
+indico/modules/rb/api.py:    #TODO addition by Steve Hoffmann of funding source
+indico/modules/rb/api.py:    #TODO addition by Steve Hoffmann of service
+indico/modules/rb/schemas.py:        #TODO addition by Steve Hoffmann of service
+indico/modules/rb/schemas.py:        #TODO addition by Steve Hoffmann of funding source
+indico/modules/rb/schemas.py:        #TODO addition by Steve Hoffmann of funding source
+indico/modules/rb/schemas.py:        #TODO addition by Steve Hoffmann of service
+indico/modules/rb/schemas.py:    #TODO addition by Steve Hoffmann of funding source
+indico/modules/rb/schemas.py:     #TODO addition by Steve Hoffmann of service
+indico/modules/rb/schemas.py:        #TODO addition by Steve Hoffmann of funding source
+indico/modules/rb/schemas.py:        #TODO addition by Steve Hoffmann of service
+indico/modules/rb/schemas.py:        #TODO addition by Steve Hoffmann of funding source
+indico/modules/rb/schemas.py:        #TODO addition by Steve Hoffmann of service
+indico/modules/rb/controllers/backend/bookings.py:            #TODO addition by Steve Hoffmann for funding source
+indico/modules/rb/controllers/backend/bookings.py:                   #TODO addition by Steve Hoffmann for service
+indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx:          {/*TODO addition by Steve Hoffmann request for service*/}
+indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx:          {/*TODO addition by Steve Hoffmann request for funding source */}
+indico/modules/rb/client/js/common/bookings/BookingEdit.jsx:      //TODO addition by Steve Hoffmann to update services
+indico/modules/rb/client/js/modules/bookRoom/serializers.js:  //TODO addition by Steve Hoffmann funding
+indico/modules/rb/client/js/modules/bookRoom/serializers.js:  //TODO addition by Steve Hoffmann service
+indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx:                  {/*TODO addition by Steve Hoffmann request for service*/}
+indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx:                  {/*TODO addition by Steve Hoffmann request for funding source */}
+indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx:          //TODO replacing reason with reasontxt and overriding reason by Steve Hoffmann to transfer funding and service info

@@ -186,7 +186,7 @@ class BookingEditForm extends React.Component {
     const bookingFinished = today.isAfter(endDt, 'day');
     const recurringBookingInProgress = getRecurrenceInfo(repetition).type === 'every';
     const recurrenceHidden = hideOptions.recurringWeekly && hideOptions.recurringMonthly;
-
+ 
     // all but one option are hidden
     const showRecurrenceOptions =
       ['single', 'daily', 'recurring'].filter(x => hideOptions[x]).length !== 2;
@@ -386,10 +386,32 @@ class BookingEditForm extends React.Component {
           <FinalTextArea
             name="reason"
             nullIfEmpty
-            placeholder={Translate.string('Reason for booking')}
+            placeholder={Translate.string('Booking purpose')}
             required={requireReason}
             disabled={submitSucceeded}
           />
+          {/*TODO addition by Steve Hoffmann request for service*/}
+      {/**/}<Form.Group>
+             <FinalRadio
+              name="service"
+              value={false}
+              label={Translate.string("in-house project")}
+              disabled={submitSucceeded}  
+          />
+          <FinalRadio
+              name="service"
+              value={true}
+              label={Translate.string("third-party project")}
+              disabled={submitSucceeded}
+          />
+          </Form.Group>{/**/}
+          {/*TODO addition by Steve Hoffmann request for funding source */} 
+      {/**/} <FinalTextArea
+             name="funding" 
+             placeholder={Translate.string('External funding source (Grant number or ID)')}
+             disabled={submitSucceeded}
+             required={false}
+          />  {/**/}                  
         </Segment>
         {renderPluginComponents('rb-booking-form-extra-fields', {
           room,

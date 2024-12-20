@@ -105,7 +105,7 @@ class BookingEdit extends React.Component {
   get initialFormValues() {
     const {
       user: sessionUser,
-      booking: {repetition, startDt, endDt, bookedForUser, bookingReason, internalNote},
+      booking: {repetition, startDt, endDt, bookedForUser, bookingReason, internalNote, service, funding},
     } = this.props;
     const recurrence = getRecurrenceInfo(repetition);
     const isSingleBooking = recurrence.type === 'single';
@@ -123,6 +123,9 @@ class BookingEdit extends React.Component {
       usage,
       user: bookedForUser.identifier,
       reason: bookingReason,
+      //TODO addition by Steve Hoffmann to update services
+      service,
+      funding,
       internalNote,
       extraFieldsChanged: false,
     };
@@ -322,6 +325,8 @@ class BookingEdit extends React.Component {
       timeSlot: {startTime, endTime},
       user,
       reason,
+      service,
+      funding,
       recurrence,
       internalNote,
     } = data;
@@ -344,6 +349,8 @@ class BookingEdit extends React.Component {
       recurrence_weekdays: recurrence.weekdays,
       room_id: roomId,
       user,
+      service,
+      funding,
       reason: reason || undefined,
       internal_note: internalNote,
     };

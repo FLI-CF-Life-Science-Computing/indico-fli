@@ -346,12 +346,16 @@ class RHUpdateBooking(RHBookingBase):
         new_booking_data = {
             'booking_reason': args['booking_reason'],
             'internal_note': args.get('internal_note', self.booking.internal_note),
+            #TODO addition by Steve Hoffmann for funding source
+            'funding': args.get('funding', self.booking.funding),
             'booked_for_user': args.get('booked_for_user', self.booking.booked_for_user),
             'start_dt': args['start_dt'],
             'end_dt': args['end_dt'],
             'repeat_frequency': args['repeat_frequency'],
             'repeat_interval': args['repeat_interval'],
             'recurrence_weekdays': args['recurrence_weekdays'],
+                   #TODO addition by Steve Hoffmann for service
+            'service': args['service'],
         }
 
         check_repeat_frequency(self.booking.repeat_frequency, new_booking_data['repeat_frequency'])

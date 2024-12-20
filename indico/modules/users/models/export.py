@@ -29,7 +29,7 @@ class DataExportRequestState(RichIntEnum):
     failed = 3
     expired = 4  # The associated file has been deleted
 
-
+#TODO addition by Steve Hoffmann in titles removing Room and replace to Resource
 class DataExportOptions(RichStrEnum):
     __titles__ = {
         'personal_data': _('Personal data'),
@@ -37,7 +37,7 @@ class DataExportOptions(RichStrEnum):
         'contribs': _('Contributions'),
         'note_revisions': _('Minutes'),
         'registrations': _('Registrations'),
-        'room_booking': _('Room booking'),
+        'room_booking': _('Resource booking'),
         'abstracts_papers': _('Abstracts & Papers'),
         'survey_submissions': _('Survey submissions'),
         'attachments': _('Attachments & Materials'),

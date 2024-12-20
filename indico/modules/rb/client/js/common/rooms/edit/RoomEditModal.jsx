@@ -298,7 +298,8 @@ function RoomEditModal({roomId, locationId, onClose, afterCreation}) {
     return (
       <Modal open onClose={closeModal} size="large" centered={false} closeIcon>
         <Modal.Header>
-          {isNewRoom ? <Translate>Add Room</Translate> : <Translate>Edit Room Details</Translate>}
+          {/*TODO addition by Steve Hoffmann to remove Room and replace it by Resource*/}
+          {isNewRoom ? <Translate>Add Resource</Translate> : <Translate>Edit Resource Details</Translate>}
         </Modal.Header>
         <Modal.Content>
           <Message styleName="submit-message" positive hidden={!afterCreation || wasEverUpdated}>
@@ -312,7 +313,7 @@ function RoomEditModal({roomId, locationId, onClose, afterCreation}) {
                   positive
                   hidden={!submitSucceeded || modifiedSinceLastSubmit}
                 >
-                  <Translate>Room has been successfully updated.</Translate>
+                  <Translate>Resource has been successfully updated.</Translate>
                 </Message>
               );
             }}
@@ -322,7 +323,7 @@ function RoomEditModal({roomId, locationId, onClose, afterCreation}) {
               return (
                 <Message styleName="submit-message" negative hidden={!submitFailed || dirty}>
                   <p>
-                    <Translate>Room could not be updated.</Translate>
+                    <Translate>Resource could not be updated.</Translate>
                   </p>
                   <Button
                     type="button"

@@ -3329,7 +3329,7 @@ msgstr "Bestätigung ausstehend"
 
 #: indico/modules/rb/client/js/common/bookings/BookingDetails.jsx
 msgid "This booking is subject to acceptance by the room owner"
-msgstr "Diese Buchung muss noch vom Raumverantwortlichen bestätigt werden"
+msgstr "Diese Buchung muss noch vom Verantwortlichen bestätigt werden"
 
 #: indico/modules/rb/client/js/common/bookings/BookingDetails.jsx
 #: indico/modules/rb/client/js/common/timeline/TimelineItem.jsx
@@ -3554,7 +3554,7 @@ msgstr "Reservierungsgrund"
 #: indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Internal notes about the booking are only visible to room managers."
-msgstr "Interne Notizen zur Buchung sind nur für Raummanager sichtbar."
+msgstr "Interne Notizen zur Buchung sind nur fürManager sichtbar."
 
 #: indico/modules/rb/client/js/common/bookings/BookingExportModal.jsx
 #: indico/modules/rb/client/js/modules/roomList/RoomList.jsx
@@ -3576,7 +3576,7 @@ msgstr "Zu exportierende Räume"
 
 #: indico/modules/rb/client/js/common/bookings/BookingExportModal.jsx
 msgid "Please choose at least one room."
-msgstr "Bitte wählen Sie mindestens einen Raum aus."
+msgstr "Bitte wählen Sie mindestens eine Ressource naus."
 
 #: indico/modules/rb/client/js/common/bookings/BookingLinks.jsx
 msgid "This booking has {count} linked occurrence:"
@@ -3659,7 +3659,7 @@ msgstr "Alle Buchungen anzeigen"
 
 #: indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
 msgid "Would you like to use this space?"
-msgstr "Möchten Sie diesen Raum nutzen?"
+msgstr "Möchten Sie dies Ressource nutzen?"
 
 #: indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
 msgid "Start booking"
@@ -3671,11 +3671,11 @@ msgstr "Vormerkung beginnen"
 
 #: indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
 msgid "Anyone can book this space."
-msgstr "Jeder kann diesen Raum reservieren"
+msgstr "Jeder kann diesen Ressource reservieren"
 
 #: indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
 msgid "You can book this space."
-msgstr "Sie können diesen Raum reservieren."
+msgstr "Sie können diesen essource reservieren."
 
 #: indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
 msgid "Max. {max_advance_days} days in advance"
@@ -3683,15 +3683,15 @@ msgstr "Max. {max_advance_days} Tage im Voraus"
 
 #: indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
 msgid "This space cannot be booked at the moment."
-msgstr "Dieser Raum kann zur Zeit nicht reserviert werden."
+msgstr "Dieser Ressource kann zur Zeit nicht reserviert werden."
 
 #: indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
 msgid "You are not authorized to book this space."
-msgstr "Sie sind nicht berechtigt diesen Raum zu reservieren."
+msgstr "Sie sind nicht berechtigt diese Ressource zu reservieren."
 
 #: indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
 msgid "Room Details"
-msgstr "Raumdetails"
+msgstr "Ressourcendetails"
 
 #: indico/modules/rb/client/js/common/rooms/RoomStats.jsx
 msgid "Times booked"
@@ -3832,7 +3832,7 @@ msgstr "Raum hinzufügen"
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
 msgid "Edit Room Details"
-msgstr "Raumdetails bearbeiten"
+msgstr "Ressourcendetails bearbeiten"
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
 msgid "Room has been successfully created."
@@ -4003,7 +4003,7 @@ msgstr "Wiederholung ablehnen"
 
 #: indico/modules/rb/client/js/common/timeline/RowActionsDropdown.jsx
 msgid "Show room timeline"
-msgstr "Zeitleiste des Raums anzeigen"
+msgstr "Zeitleiste anzeigen"
 
 #: indico/modules/rb/client/js/common/timeline/RowActionsDropdown.jsx
 msgid "Are you sure you want to cancel this occurrence ({serializedDate})?"
@@ -4129,12 +4129,12 @@ msgid "Search"
 msgstr "Suche"
 
 #: indico/modules/rb/client/js/components/Menu.jsx
-msgid "Book a Room"
-msgstr "Raum reservieren"
+msgid "Book a resource"
+msgstr "Ressource reservieren"
 
 #: indico/modules/rb/client/js/components/Menu.jsx
-msgid "List of Rooms"
-msgstr "Raumliste"
+msgid "List of resources"
+msgstr "Ressourcenliste"
 
 #: indico/modules/rb/client/js/components/Menu.jsx
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx

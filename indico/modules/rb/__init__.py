@@ -74,24 +74,25 @@ def _get_extra_user_prefs(sender, **kwargs):
     if config.ENABLE_ROOMBOOKING:
         return RBUserPreferences
 
-
+#TODO addition by Steve Hoffmann Room replace
 @signals.menu.items.connect_via('admin-sidemenu')
 def _extend_admin_menu(sender, **kwargs):
     if config.ENABLE_ROOMBOOKING and session.user.is_admin:
         url = url_for('rb.roombooking', path='admin')
-        return SideMenuItem('rb', _('Room booking'), url, 70, icon='location')
+        return SideMenuItem('rb', _('Resource booking'), url, 70, icon='location')
 
 
+#TODO addition by Steve Hoffmann Room replace
 @signals.menu.items.connect_via('top-menu')
 def _topmenu_items(sender, **kwargs):
     if config.ENABLE_ROOMBOOKING and rb_check_if_visible(session.user):
-        yield TopMenuItem('room_booking', _('Room booking'), url_for('rb.roombooking'), 80)
+        yield TopMenuItem('room_booking', _('Resource booking'), url_for('rb.roombooking'), 80)
 
-
+#TODO addition by Steve Hoffmann Room replace
 @signals.menu.items.connect_via('event-management-sidemenu')
 def _sidemenu_items(sender, event, **kwargs):
     if config.ENABLE_ROOMBOOKING and event.can_manage(session.user):
-        yield SideMenuItem('room_booking', _('Room bookings'), url_for('rb.event_booking_list', event), 50,
+        yield SideMenuItem('room_booking', _('Resource bookings'), url_for('rb.event_booking_list', event), 50,
                            icon='location')
 
 
@@ -122,34 +123,38 @@ def _event_deleted(event, user, **kwargs):
             link.reservation_occurrence.cancel(user or session.user, 'Associated event was deleted')
 
 
+#TODO addition by Steve Hoffmann Room replace
 class BookPermission(ManagementPermission):
     name = 'book'
-    friendly_name = pgettext('Room booking permission name', 'Book')
+    friendly_name = pgettext('Booking permission name', 'Book')
     description = _('Allows booking the room')
     user_selectable = True
     color = 'green'
 
 
+#TODO addition by Steve Hoffmann Room replace
 class PrebookPermission(ManagementPermission):
     name = 'prebook'
-    friendly_name = pgettext('Room booking permission name', 'Prebook')
+    friendly_name = pgettext('Booking permission name', 'Prebook')
     description = _('Allows prebooking the room')
     user_selectable = True
     default = True
     color = 'orange'
 
 
+#TODO addition by Steve Hoffmann Room replace
 class OverridePermission(ManagementPermission):
     name = 'override'
-    friendly_name = pgettext('Room booking permission name', 'Override')
+    friendly_name = pgettext('Booking permission name', 'Override')
     description = _('Allows overriding restrictions when booking the room')
     user_selectable = True
     color = 'pink'
 
 
+#TODO addition by Steve Hoffmann Room replace
 class ModeratePermission(ManagementPermission):
     name = 'moderate'
-    friendly_name = pgettext('Room booking permission name', 'Moderate')
+    friendly_name = pgettext('Booking permission name', 'Moderate')
     description = _('Allows moderating bookings (approving/rejecting/editing)')
     user_selectable = True
     color = 'purple'

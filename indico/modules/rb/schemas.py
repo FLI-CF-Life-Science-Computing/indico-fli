@@ -139,7 +139,9 @@ class ReservationSchema(mm.SQLAlchemyAutoSchema):
 
     class Meta:
         model = Reservation
-        fields = ('id', 'booking_reason', 'booked_for_name', 'room_id', 'is_accepted', 'start_dt', 'end_dt',
+        #TODO addition by Steve Hoffmann of service for db reservaltion scheme
+        #TODO addition by Steve Hoffmann of funding source db reservation schema
+        fields = ('id', 'booking_reason', 'service', 'funding', 'booked_for_name', 'room_id', 'is_accepted', 'start_dt', 'end_dt',
                   'is_repeating', 'repeat_frequency', 'repeat_interval', 'recurrence_weekdays')
 
     @post_dump(pass_original=True)
@@ -269,8 +271,10 @@ class ReservationDetailsSchema(mm.SQLAlchemyAutoSchema):
 
     class Meta:
         model = Reservation
+        #TODO addition by Steve Hoffmann of funding source to db schema
+        #TODO addition by Steve Hoffmann of service to db schema
         fields = ('id', 'start_dt', 'end_dt', 'repetition', 'booking_reason', 'created_dt', 'booked_for_user',
-                  'room_id', 'created_by_user', 'edit_logs', 'permissions',
+                  'room_id', 'created_by_user', 'edit_logs', 'permissions', 'funding', 'service',
                   'is_cancelled', 'is_rejected', 'is_accepted', 'is_pending', 'rejection_reason',
                   'is_linked_to_objects', 'state', 'external_details_url', 'internal_note', 'recurrence_weekdays')
 
@@ -404,11 +408,15 @@ class CreateBookingSchema(mm.Schema):
     room_id = fields.Int(required=True)
     booked_for_user = Principal(data_key='user', allow_external_users=True)
     booking_reason = fields.String(data_key='reason', load_default='')
+    #TODO addition by Steve Hoffmann of funding source, register as string in db
+    funding = fields.String()
     internal_note = fields.String()
     is_prebooking = fields.Bool(load_default=False)
     link_type = EnumField(LinkType)
     link_id = fields.Int()
     link_back = fields.Bool(load_default=False)
+     #TODO addition by Steve Hoffmann of service register as boolean in db
+    service = fields.Bool(data_key='service', load_default=False)
     admin_override_enabled = fields.Bool(load_default=False)
     extra_fields = fields.Dict(load_default=lambda: {})
 
@@ -646,9 +654,11 @@ class RoomLegacyMinimalAPISchema(RoomSchema):
 class ReservationLegacyAPISchema(ReservationSchema):
     # XXX: this schema is legacy due to its camelCased keys; do not use it in any new code
     class Meta(ReservationSchema.Meta):
+        #TODO addition by Steve Hoffmann of funding source
+        #TODO addition by Steve Hoffmann of service
         fields = ('id', 'repeat_frequency', 'repeat_interval', 'booked_for_name',
                   'external_details_url', 'booking_reason', 'is_accepted', 'is_cancelled', 'is_rejected',
-                  'location_name', 'contact_email')
+                  'location_name', 'contact_email', 'funding', 'service')
 
     @post_dump(pass_original=True)
     def _rename_keys(self, data, orig, **kwargs):
@@ -656,7 +666,11 @@ class ReservationLegacyAPISchema(ReservationSchema):
         data['endDT'] = _add_server_tz(orig.end_dt)
         data['bookedForName'] = data.pop('booked_for_name')
         data['bookingUrl'] = data.pop('external_details_url')
+        #TODO addition by Steve Hoffmann of funding source - not sure if needed
+        #TODO addition by Steve Hoffmann of service - not sure if needed
         data['reason'] = data.pop('booking_reason')
+        data['service'] = data.pop('service')
+        data['funding'] = data.pop('funding')
         data['isConfirmed'] = data['isValid'] = data.pop('is_accepted')
         data['location'] = data.pop('location_name')
         data['booked_for_user_email'] = data.pop('contact_email')

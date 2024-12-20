@@ -1,0 +1,746 @@
+diff --git a/indico/modules/rb/__init__.py b/indico/modules/rb/__init__.py
+index 9edf8270bd..ca76706aaf 100644
+--- a/indico/modules/rb/__init__.py
++++ b/indico/modules/rb/__init__.py
+@@ -74,24 +74,25 @@ def _get_extra_user_prefs(sender, **kwargs):
+     if config.ENABLE_ROOMBOOKING:
+         return RBUserPreferences
+ 
+-
++#TODO addition by Steve Hoffmann Room replace
+ @signals.menu.items.connect_via('admin-sidemenu')
+ def _extend_admin_menu(sender, **kwargs):
+     if config.ENABLE_ROOMBOOKING and session.user.is_admin:
+         url = url_for('rb.roombooking', path='admin')
+-        return SideMenuItem('rb', _('Room booking'), url, 70, icon='location')
++        return SideMenuItem('rb', _('Resource booking'), url, 70, icon='location')
+ 
+ 
++#TODO addition by Steve Hoffmann Room replace
+ @signals.menu.items.connect_via('top-menu')
+ def _topmenu_items(sender, **kwargs):
+     if config.ENABLE_ROOMBOOKING and rb_check_if_visible(session.user):
+-        yield TopMenuItem('room_booking', _('Room booking'), url_for('rb.roombooking'), 80)
+-
++        yield TopMenuItem('room_booking', _('Resource booking'), url_for('rb.roombooking'), 80)
+ 
++#TODO addition by Steve Hoffmann Room replace
+ @signals.menu.items.connect_via('event-management-sidemenu')
+ def _sidemenu_items(sender, event, **kwargs):
+     if config.ENABLE_ROOMBOOKING and event.can_manage(session.user):
+-        yield SideMenuItem('room_booking', _('Room bookings'), url_for('rb.event_booking_list', event), 50,
++        yield SideMenuItem('room_booking', _('Resource bookings'), url_for('rb.event_booking_list', event), 50,
+                            icon='location')
+ 
+ 
+@@ -122,34 +123,38 @@ def _event_deleted(event, user, **kwargs):
+             link.reservation_occurrence.cancel(user or session.user, 'Associated event was deleted')
+ 
+ 
++#TODO addition by Steve Hoffmann Room replace
+ class BookPermission(ManagementPermission):
+     name = 'book'
+-    friendly_name = pgettext('Room booking permission name', 'Book')
++    friendly_name = pgettext('Booking permission name', 'Book')
+     description = _('Allows booking the room')
+     user_selectable = True
+     color = 'green'
+ 
+ 
++#TODO addition by Steve Hoffmann Room replace
+ class PrebookPermission(ManagementPermission):
+     name = 'prebook'
+-    friendly_name = pgettext('Room booking permission name', 'Prebook')
++    friendly_name = pgettext('Booking permission name', 'Prebook')
+     description = _('Allows prebooking the room')
+     user_selectable = True
+     default = True
+     color = 'orange'
+ 
+ 
++#TODO addition by Steve Hoffmann Room replace
+ class OverridePermission(ManagementPermission):
+     name = 'override'
+-    friendly_name = pgettext('Room booking permission name', 'Override')
++    friendly_name = pgettext('Booking permission name', 'Override')
+     description = _('Allows overriding restrictions when booking the room')
+     user_selectable = True
+     color = 'pink'
+ 
+ 
++#TODO addition by Steve Hoffmann Room replace
+ class ModeratePermission(ManagementPermission):
+     name = 'moderate'
+-    friendly_name = pgettext('Room booking permission name', 'Moderate')
++    friendly_name = pgettext('Booking permission name', 'Moderate')
+     description = _('Allows moderating bookings (approving/rejecting/editing)')
+     user_selectable = True
+     color = 'purple'
+diff --git a/indico/modules/rb/api.py b/indico/modules/rb/api.py
+index 34332bcd53..fe24a47436 100644
+--- a/indico/modules/rb/api.py
++++ b/indico/modules/rb/api.py
+@@ -201,6 +201,8 @@ class BookRoomHook(HTTPAPIHook):
+             raise HTTPAPIError('The API only supports direct bookings but this room only allows pre-bookings.')
+         return False
+ 
++    #TODO addition by Steve Hoffmann of funding source - not sure if needed
++    #TODO addition by Steve Hoffmann of service - not sure if needed
+     def api_roomBooking(self, user):
+         data = MultiDict({
+             'start_dt': self._params['from'],
+@@ -209,7 +211,9 @@ class BookRoomHook(HTTPAPIHook):
+             'repeat_interval': 0,
+             'room_id': self._room.id,
+             'booked_for_user': self._params['booked_for'],
+-            'booking_reason': self._params['reason']
++            'booking_reason': self._params['reason'],
++            'service': self._params['service'],
++            'funding': self._params['funding']
+         })
+         try:
+             reservation = Reservation.create_from_data(self._room, data, user)
+diff --git a/indico/modules/rb/client/js/common/bookings/BookingEdit.jsx b/indico/modules/rb/client/js/common/bookings/BookingEdit.jsx
+index 21a9932ee8..cf61dea7ef 100644
+--- a/indico/modules/rb/client/js/common/bookings/BookingEdit.jsx
++++ b/indico/modules/rb/client/js/common/bookings/BookingEdit.jsx
+@@ -105,7 +105,7 @@ class BookingEdit extends React.Component {
+   get initialFormValues() {
+     const {
+       user: sessionUser,
+-      booking: {repetition, startDt, endDt, bookedForUser, bookingReason, internalNote},
++      booking: {repetition, startDt, endDt, bookedForUser, bookingReason, internalNote, service, funding},
+     } = this.props;
+     const recurrence = getRecurrenceInfo(repetition);
+     const isSingleBooking = recurrence.type === 'single';
+@@ -123,6 +123,9 @@ class BookingEdit extends React.Component {
+       usage,
+       user: bookedForUser.identifier,
+       reason: bookingReason,
++      //TODO addition by Steve Hoffmann to update services
++      service,
++      funding,
+       internalNote,
+       extraFieldsChanged: false,
+     };
+@@ -322,6 +325,8 @@ class BookingEdit extends React.Component {
+       timeSlot: {startTime, endTime},
+       user,
+       reason,
++      service,
++      funding,
+       recurrence,
+       internalNote,
+     } = data;
+@@ -344,6 +349,8 @@ class BookingEdit extends React.Component {
+       recurrence_weekdays: recurrence.weekdays,
+       room_id: roomId,
+       user,
++      service,
++      funding,
+       reason: reason || undefined,
+       internal_note: internalNote,
+     };
+diff --git a/indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx b/indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
+index 7b77093a99..352f26c204 100644
+--- a/indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
++++ b/indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
+@@ -186,7 +186,7 @@ class BookingEditForm extends React.Component {
+     const bookingFinished = today.isAfter(endDt, 'day');
+     const recurringBookingInProgress = getRecurrenceInfo(repetition).type === 'every';
+     const recurrenceHidden = hideOptions.recurringWeekly && hideOptions.recurringMonthly;
+-
++ 
+     // all but one option are hidden
+     const showRecurrenceOptions =
+       ['single', 'daily', 'recurring'].filter(x => hideOptions[x]).length !== 2;
+@@ -386,10 +386,32 @@ class BookingEditForm extends React.Component {
+           <FinalTextArea
+             name="reason"
+             nullIfEmpty
+-            placeholder={Translate.string('Reason for booking')}
++            placeholder={Translate.string('Booking purpose')}
+             required={requireReason}
+             disabled={submitSucceeded}
+           />
++          {/*TODO addition by Steve Hoffmann request for service*/}
++      {/**/}<Form.Group>
++             <FinalRadio
++              name="service"
++              value={false}
++              label={Translate.string("in-house project")}
++              disabled={submitSucceeded}  
++          />
++          <FinalRadio
++              name="service"
++              value={true}
++              label={Translate.string("third-party project")}
++              disabled={submitSucceeded}
++          />
++          </Form.Group>{/**/}
++          {/*TODO addition by Steve Hoffmann request for funding source */} 
++      {/**/} <FinalTextArea
++             name="funding" 
++             placeholder={Translate.string('External funding source (Grant number or ID)')}
++             disabled={submitSucceeded}
++             required={false}
++          />  {/**/}                  
+         </Segment>
+         {renderPluginComponents('rb-booking-form-extra-fields', {
+           room,
+diff --git a/indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx b/indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
+index f6a0b9a242..acc2531958 100644
+--- a/indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
++++ b/indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
+@@ -53,9 +53,10 @@ class RoomDetailsModal extends React.Component {
+     }).isRequired,
+   };
+ 
++  //TODO addition by Steve Hoffmann to replace Room by Resource
+   static defaultProps = {
+     promptDatesOnBook: false,
+-    title: <Translate>Room Details</Translate>,
++    title: <Translate>Resource details</Translate>,
+   };
+ 
+   state = {
+diff --git a/indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx b/indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
+index 88f2af922f..36e748dbc8 100644
+--- a/indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
++++ b/indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
+@@ -298,7 +298,8 @@ function RoomEditModal({roomId, locationId, onClose, afterCreation}) {
+     return (
+       <Modal open onClose={closeModal} size="large" centered={false} closeIcon>
+         <Modal.Header>
+-          {isNewRoom ? <Translate>Add Room</Translate> : <Translate>Edit Room Details</Translate>}
++          {/*TODO addition by Steve Hoffmann to remove Room and replace it by Resource*/}
++          {isNewRoom ? <Translate>Add Resource</Translate> : <Translate>Edit Resource Details</Translate>}
+         </Modal.Header>
+         <Modal.Content>
+           <Message styleName="submit-message" positive hidden={!afterCreation || wasEverUpdated}>
+@@ -312,7 +313,7 @@ function RoomEditModal({roomId, locationId, onClose, afterCreation}) {
+                   positive
+                   hidden={!submitSucceeded || modifiedSinceLastSubmit}
+                 >
+-                  <Translate>Room has been successfully updated.</Translate>
++                  <Translate>Resource has been successfully updated.</Translate>
+                 </Message>
+               );
+             }}
+@@ -322,7 +323,7 @@ function RoomEditModal({roomId, locationId, onClose, afterCreation}) {
+               return (
+                 <Message styleName="submit-message" negative hidden={!submitFailed || dirty}>
+                   <p>
+-                    <Translate>Room could not be updated.</Translate>
++                    <Translate>Resource could not be updated.</Translate>
+                   </p>
+                   <Button
+                     type="button"
+diff --git a/indico/modules/rb/client/js/components/App.jsx b/indico/modules/rb/client/js/components/App.jsx
+index 84abaffd4f..7bc3b92330 100644
+--- a/indico/modules/rb/client/js/components/App.jsx
++++ b/indico/modules/rb/client/js/components/App.jsx
+@@ -50,8 +50,9 @@ class App extends React.Component {
+     renderExtraRoutes: PropTypes.func,
+   };
+ 
++  //TODO addition by Steve Hoffmann to change landing page title
+   static defaultProps = {
+-    title: Translate.string('Room Booking'),
++    title: Translate.string('Booking'),
+     iconName: 'home',
+     renderExtraRoutes: () => null,
+   };
+diff --git a/indico/modules/rb/client/js/components/Menu.jsx b/indico/modules/rb/client/js/components/Menu.jsx
+index d3c53a93b3..8d4d89ac27 100644
+--- a/indico/modules/rb/client/js/components/Menu.jsx
++++ b/indico/modules/rb/client/js/components/Menu.jsx
+@@ -15,10 +15,10 @@ import {Responsive} from 'indico/react/util';
+ import MenuItem from './MenuItem';
+ 
+ import './Menu.module.scss';
+-
++//TODO change by Steve Hoffmann to remove Room
+ const defaultLabels = {
+-  bookRoom: <Translate>Book a Room</Translate>,
+-  roomList: <Translate>List of Rooms</Translate>,
++  bookRoom: <Translate>Book a resource</Translate>,
++  roomList: <Translate>List of resources</Translate>,
+   calendar: <Translate>Bookings</Translate>,
+ };
+ 
+diff --git a/indico/modules/rb/client/js/modules/bookRoom/BookFromListModal.jsx b/indico/modules/rb/client/js/modules/bookRoom/BookFromListModal.jsx
+index c73ef71eff..48c06c0662 100644
+--- a/indico/modules/rb/client/js/modules/bookRoom/BookFromListModal.jsx
++++ b/indico/modules/rb/client/js/modules/bookRoom/BookFromListModal.jsx
+@@ -81,9 +81,10 @@ class BookFromListModal extends React.Component {
+     availability: null,
+     defaults: undefined,
+     isPrebooking: false,
++    //TODO addition by Steve Hoffmann to remove Room and replace by Resource
+     labels: {
+-      bookTitle: <Translate>Book Room</Translate>,
+-      preBookTitle: <Translate>Pre-Book Room</Translate>,
++      bookTitle: <Translate>Book</Translate>,
++      preBookTitle: <Translate>Pre-Book</Translate>,
+       bookBtn: <Translate>Book</Translate>,
+       preBookBtn: <Translate>Pre-Book</Translate>,
+     },
+diff --git a/indico/modules/rb/client/js/modules/bookRoom/BookRoom.jsx b/indico/modules/rb/client/js/modules/bookRoom/BookRoom.jsx
+index f8d6782f95..82b369901f 100644
+--- a/indico/modules/rb/client/js/modules/bookRoom/BookRoom.jsx
++++ b/indico/modules/rb/client/js/modules/bookRoom/BookRoom.jsx
+@@ -80,11 +80,12 @@ class BookRoom extends React.Component {
+     }),
+   };
+ 
++  //TODO addition by Steve Hoffmann to remove Room and replace by Resource
+   static defaultProps = {
+     showSuggestions: true,
+     labels: {
+-      bookButton: <Translate>Book Room</Translate>,
+-      preBookButton: <Translate>Pre-Book Room</Translate>,
++      bookButton: <Translate>Book</Translate>,
++      preBookButton: <Translate>Pre-Book</Translate>,
+       detailsButton: <Translate>See details</Translate>,
+     },
+   };
+diff --git a/indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx b/indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
+index 272cbbf150..2634ff92cb 100644
+--- a/indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
++++ b/indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
+@@ -53,9 +53,11 @@ function validate({usage, user, reason}, requireReason) {
+   if (usage === 'someone' && !user) {
+     errors.user = Translate.string('Please specify a user');
+   }
++  //TODO alternative by Steve Hoffmann changing reason to reasontxt to override value with concat
+   if (requireReason && !reason) {
+     errors.reason = Translate.string('You need to provide a reason');
+   }
++  //TODO alternative by Steve Hoffmann changing reason to reasontxt to override value with concat
+   if (reason && reason.length < 3) {
+     errors.reason = Translate.string('Reason must be at least 3 characters');
+   }
+@@ -104,7 +106,7 @@ class BookRoomModal extends React.Component {
+     timeInformationComponent: TimeInformation,
+     link: null,
+     defaultTitles: {
+-      booking: <Translate>Create Booking</Translate>,
++      booking: <Translate>Create Ressource Booking</Translate>,
+       preBooking: <Translate>Create Pre-booking</Translate>,
+     },
+     bookingGracePeriod: null,
+@@ -115,7 +117,7 @@ class BookRoomModal extends React.Component {
+     bookingConflictsVisible: false,
+     booking: null,
+     selectedEvent: null,
+-    extraFields: null,
++    extraFields: null, 
+   };
+ 
+   componentDidMount() {
+@@ -525,6 +527,7 @@ class BookRoomModal extends React.Component {
+       </BookingObjectLink>
+     );
+   }
++   
+ 
+   render() {
+     const {
+@@ -536,13 +539,13 @@ class BookRoomModal extends React.Component {
+       link,
+       bookingReasonRequired,
+       isAdminOverrideEnabled,
+-      bookingGracePeriod,
++      bookingGracePeriod,  
+     } = this.props;
+ 
+     if (!room) {
+       return null;
+     }
+-
++   
+     const requireReason =
+       {always: true, never: false, not_for_events: !link}[bookingReasonRequired] ?? true;
+     const {skipConflicts, bookingConflictsVisible} = this.state;
+@@ -595,7 +598,7 @@ class BookRoomModal extends React.Component {
+                     <FinalRadio
+                       name="usage"
+                       value="myself"
+-                      label={Translate.string("I'll be using it myself")}
++                      label={Translate.string("I'm booking for myself")}
+                       disabled={fprops.submitSucceeded}
+                     />
+                     <FinalRadio
+@@ -619,13 +622,44 @@ class BookRoomModal extends React.Component {
+                       )}
+                     </FavoritesProvider>
+                   </FieldCondition>
++    
++                  {/*TODO alternative by Steve Hoffmann replace reason with reasontxt*/}
+                   <FinalTextArea
+                     name="reason"
+                     nullIfEmpty
+-                    placeholder={Translate.string('Reason for booking')}
++                    placeholder={Translate.string('Booking purpose (required field)')}
+                     disabled={fprops.submitSucceeded}
+-                    required={requireReason}
++                    required={requireReason}  
+                   />
++                  {/*TODO addition by Steve Hoffmann third party (service)*/}
++                  <Form.Group styleName="usage-radio">
++                    <FinalRadio
++                      name="service"
++                      value="false"
++                      label={Translate.string("in-house project")}
++                      disabled={fprops.submitSucceeded}  
++                    />
++                    <FinalRadio
++                      name="service"
++                      value="true"
++                      label={Translate.string("third-party project")}
++                      disabled={fprops.submitSucceeded}
++                    /> 
++            </Form.Group>
++      {/*TODO addition by Steve Hoffmann request for funding source */} 
++                  
++                  <FieldCondition when="service" is="true">
++                   <div style={{ marginTop: '15px' }}>
++                  <FinalTextArea
++                    name="funding"
++                    //nullIfEmpty
++                    placeholder={Translate.string('External funding source (Grant number or ID)')}
++                    disabled={fprops.submitSucceeded}
++                    required={false} 
++                  /> 
++                 </div>
++                  </FieldCondition>
++
+                 </Segment>
+                 {renderPluginComponents('rb-booking-form-extra-fields', {
+                   room,
+@@ -658,7 +692,9 @@ class BookRoomModal extends React.Component {
+                     <Translate as="p">
+                       Internal notes about the booking are only visible to room managers.
+                     </Translate>
+-                    <FinalTextArea name="internalNote" disabled={fprops.submitSucceeded} />
++
++                  {/*TODO alternative by Steve Hoffmann replace internal with internaltxt*/}
++                    <FinalTextArea name="internaltxt" disabled={fprops.submitSucceeded} />
+                   </Segment>
+                 </Form>
+               )}
+@@ -716,7 +752,8 @@ class BookRoomModal extends React.Component {
+           validate={values => validate(values, requireReason)}
+           decorators={[formDecorator]}
+           render={renderModalContent}
+-          initialValues={{user: null, linkBack, extraFields: null}}
++          //TODO alternative by Steve Hoffmann: replace reason with reasontxt
++          initialValues={{usage: 'myself', user: null, linkBack, extraFields: null, service:'false', reason: '', funding: ''}}
+           subscription={{
+             submitSucceeded: true,
+             submitError: true,
+@@ -754,7 +791,15 @@ export default connect(
+         fetchRelatedEvents: actions.fetchRelatedEvents,
+         resetRelatedEvents: actions.resetRelatedEvents,
+         createBooking: (data, props) => {
+-          const {reason, internalNote, usage, user, linkType, linkId, linkBack, extraFields} = data;
++         
++          //TODO replacing reason with reasontxt and overriding reason by Steve Hoffmann to transfer funding and service info 
++          //to piggy back information in the reason field. This is an ugly hack alternative but may be necessary to use
++          //if db-variant fails to work. HOWTO: replace reason by reasontxt and internalNote by internaltxt above and
++          //concat values.
++          const {reason, internaltxt, usage, service, funding, user, linkType, linkId, linkBack, extraFields} = data;
++
++          //const reason = `${reasontxt}`
++          const internalNote = `${internaltxt}`;//`${internaltxt};funding=${funding};service=${service}`;
+           const {
+             bookingData: {recurrence, dates, recurrenceWeekdays, timeSlot, isPrebooking},
+             room,
+@@ -765,6 +810,8 @@ export default connect(
+               reason,
+               internalNote,
+               usage,
++              service,
++              funding, 
+               user,
+               recurrence,
+               recurrenceWeekdays,
+diff --git a/indico/modules/rb/client/js/modules/bookRoom/serializers.js b/indico/modules/rb/client/js/modules/bookRoom/serializers.js
+index ef17d8395e..535ae4dd19 100644
+--- a/indico/modules/rb/client/js/modules/bookRoom/serializers.js
++++ b/indico/modules/rb/client/js/modules/bookRoom/serializers.js
+@@ -19,6 +19,10 @@ export const ajax = {
+   repeat_interval: recurrenceIntervalSerializer,
+   recurrence_weekdays: recurrenceWeekdaysSerializer,
+   reason: ({reason}) => reason,
++  //TODO addition by Steve Hoffmann funding
++  funding: ({funding}) => funding,
++  //TODO addition by Steve Hoffmann service
++  service: ({service}) => service,
+   user: {
+     onlyIf: ({usage}) => usage === 'someone',
+     serializer: ({user}) => user,
+diff --git a/indico/modules/rb/controllers/backend/bookings.py b/indico/modules/rb/controllers/backend/bookings.py
+index 34e75a7f20..d646e92498 100644
+--- a/indico/modules/rb/controllers/backend/bookings.py
++++ b/indico/modules/rb/controllers/backend/bookings.py
+@@ -346,12 +346,16 @@ class RHUpdateBooking(RHBookingBase):
+         new_booking_data = {
+             'booking_reason': args['booking_reason'],
+             'internal_note': args.get('internal_note', self.booking.internal_note),
++            #TODO addition by Steve Hoffmann for funding source
++            'funding': args.get('funding', self.booking.funding),
+             'booked_for_user': args.get('booked_for_user', self.booking.booked_for_user),
+             'start_dt': args['start_dt'],
+             'end_dt': args['end_dt'],
+             'repeat_frequency': args['repeat_frequency'],
+             'repeat_interval': args['repeat_interval'],
+             'recurrence_weekdays': args['recurrence_weekdays'],
++                   #TODO addition by Steve Hoffmann for service
++            'service': args['service'],
+         }
+ 
+         check_repeat_frequency(self.booking.repeat_frequency, new_booking_data['repeat_frequency'])
+diff --git a/indico/modules/rb/models/reservations.py b/indico/modules/rb/models/reservations.py
+index 4fbbf4ea35..65b2128c41 100644
+--- a/indico/modules/rb/models/reservations.py
++++ b/indico/modules/rb/models/reservations.py
+@@ -177,6 +177,22 @@ class Reservation(db.Model):
+         db.Text,
+         nullable=False
+     )
++    #TODO addition by Steve Hoffmann for funding source
++    #updating data base model https://docs.getindico.io/en/stable/plugins/models/
++    #see README in root dir
++    funding = db.Column(
++        db.Text,
++        nullable=True,
++        default=''
++    )
++    #TODO addition by Steve Hoffmann for service request
++    #updating data base model https://docs.getindico.io/en/stable/plugins/models/
++    #see README in root dir
++    service = db.Column(
++        db.Boolean,
++        nullable=True,
++        default=False
++    )
+     rejection_reason = db.Column(
+         db.String,
+         nullable=True
+@@ -273,11 +289,13 @@ class Reservation(db.Model):
+     def links(self):
+         return [x.link for x in self.occurrences if x.link]
+ 
++    #TODO addition by Steve Hoffmann to always add internal notes to data base original force_internal_note=False
+     def __repr__(self):
+-        return format_repr(self, 'id', 'room_id', 'start_dt', 'end_dt', 'state', _text=self.booking_reason)
++        return format_repr(self, 'id', 'room_id', 'start_dt', 'end_dt', 'state', 'service', 'funding', _text=self.booking_reason)
+ 
++    #TODO addition by Steve Hoffmann to always add internal notes to data base original force_internal_note=False
+     @classmethod
+-    def create_from_data(cls, room, data, user, *, prebook=None, ignore_admin=False, force_internal_note=False):
++    def create_from_data(cls, room, data, user, *, prebook=None, ignore_admin=False, force_internal_note=True):
+         """Create a new reservation.
+ 
+         :param room: The Room that's being booked.
+@@ -290,8 +308,9 @@ class Reservation(db.Model):
+         """
+         from indico.modules.rb import rb_settings
+ 
++    #TODO addition by Steve Hoffmann to always add internal notes to data base original force_internal_note=False
+         populate_fields = {'start_dt', 'end_dt', 'repeat_frequency', 'repeat_interval', 'room_id',
+-                           'booking_reason', 'recurrence_weekdays'}
++                           'booking_reason', 'service', 'funding', 'recurrence_weekdays'}
+         if data['repeat_frequency'] == RepeatFrequency.NEVER and data['start_dt'].date() != data['end_dt'].date():
+             raise ValueError('end_dt != start_dt for non-repeating booking')
+ 
+@@ -573,9 +592,9 @@ class Reservation(db.Model):
+         :param extra_fields: A dict containing the extra fields data from the schema
+         """
+         from indico.modules.rb import rb_settings
+-
++        #TODO addition by Steve Hoffmann to send back service and funding fields
+         populate_fields = {'start_dt', 'end_dt', 'repeat_frequency', 'repeat_interval', 'recurrence_weekdays',
+-                           'booked_for_user', 'booking_reason'}
++                           'booked_for_user', 'booking_reason', 'service', 'funding'}
+         # fields affecting occurrences
+         occurrence_fields = {'start_dt', 'end_dt', 'repeat_frequency', 'repeat_interval', 'recurrence_weekdays'}
+         # fields where date and time are compared separately
+@@ -591,6 +610,9 @@ class Reservation(db.Model):
+             'repetition': 'booking type',
+             'booked_for_user': "'Booked for' user",
+             'booking_reason': 'booking reason',
++             #TODO addition by Steve Hoffmann to pretty print service and funding fields in log
++            'funding': 'funding',
++            'service': 'Service requested',
+         }
+ 
+         self.room.check_advance_days(data['end_dt'].date(), user)
+diff --git a/indico/modules/rb/operations/bookings.py b/indico/modules/rb/operations/bookings.py
+index 653b73eefb..20ce6a0c65 100644
+--- a/indico/modules/rb/operations/bookings.py
++++ b/indico/modules/rb/operations/bookings.py
+@@ -334,7 +334,7 @@ def create_booking_for_event(room_id, event):
+         end_dt = event.end_dt.astimezone(default_timezone).replace(tzinfo=None)
+         booking_reason = f"Event '{event.title}'"
+         data = {'event_id': event.id, 'start_dt': start_dt, 'end_dt': end_dt, 'booked_for_user': event.creator,
+-                'booking_reason': booking_reason, 'repeat_frequency': RepeatFrequency.NEVER}
++                'booking_reason': booking_reason, 'repeat_frequency': RepeatFrequency.NEVER, 'service': service, 'funding':funding}
+         if start_dt.date() != end_dt.date():
+             data |= {'repeat_frequency': RepeatFrequency.DAY, 'repeat_interval': 1}
+         reservation = Reservation.create_from_data(room, data, session.user, ignore_admin=True)
+diff --git a/indico/modules/rb/schemas.py b/indico/modules/rb/schemas.py
+index cfcde79438..b12a2d302d 100644
+--- a/indico/modules/rb/schemas.py
++++ b/indico/modules/rb/schemas.py
+@@ -139,7 +139,9 @@ class ReservationSchema(mm.SQLAlchemyAutoSchema):
+ 
+     class Meta:
+         model = Reservation
+-        fields = ('id', 'booking_reason', 'booked_for_name', 'room_id', 'is_accepted', 'start_dt', 'end_dt',
++        #TODO addition by Steve Hoffmann of service for db reservaltion scheme
++        #TODO addition by Steve Hoffmann of funding source db reservation schema
++        fields = ('id', 'booking_reason', 'service', 'funding', 'booked_for_name', 'room_id', 'is_accepted', 'start_dt', 'end_dt',
+                   'is_repeating', 'repeat_frequency', 'repeat_interval', 'recurrence_weekdays')
+ 
+     @post_dump(pass_original=True)
+@@ -269,8 +271,10 @@ class ReservationDetailsSchema(mm.SQLAlchemyAutoSchema):
+ 
+     class Meta:
+         model = Reservation
++        #TODO addition by Steve Hoffmann of funding source to db schema
++        #TODO addition by Steve Hoffmann of service to db schema
+         fields = ('id', 'start_dt', 'end_dt', 'repetition', 'booking_reason', 'created_dt', 'booked_for_user',
+-                  'room_id', 'created_by_user', 'edit_logs', 'permissions',
++                  'room_id', 'created_by_user', 'edit_logs', 'permissions', 'funding', 'service',
+                   'is_cancelled', 'is_rejected', 'is_accepted', 'is_pending', 'rejection_reason',
+                   'is_linked_to_objects', 'state', 'external_details_url', 'internal_note', 'recurrence_weekdays')
+ 
+@@ -404,11 +408,15 @@ class CreateBookingSchema(mm.Schema):
+     room_id = fields.Int(required=True)
+     booked_for_user = Principal(data_key='user', allow_external_users=True)
+     booking_reason = fields.String(data_key='reason', load_default='')
++    #TODO addition by Steve Hoffmann of funding source, register as string in db
++    funding = fields.String()
+     internal_note = fields.String()
+     is_prebooking = fields.Bool(load_default=False)
+     link_type = EnumField(LinkType)
+     link_id = fields.Int()
+     link_back = fields.Bool(load_default=False)
++     #TODO addition by Steve Hoffmann of service register as boolean in db
++    service = fields.Bool(data_key='service', load_default=False)
+     admin_override_enabled = fields.Bool(load_default=False)
+     extra_fields = fields.Dict(load_default=lambda: {})
+ 
+@@ -646,9 +654,11 @@ class RoomLegacyMinimalAPISchema(RoomSchema):
+ class ReservationLegacyAPISchema(ReservationSchema):
+     # XXX: this schema is legacy due to its camelCased keys; do not use it in any new code
+     class Meta(ReservationSchema.Meta):
++        #TODO addition by Steve Hoffmann of funding source
++        #TODO addition by Steve Hoffmann of service
+         fields = ('id', 'repeat_frequency', 'repeat_interval', 'booked_for_name',
+                   'external_details_url', 'booking_reason', 'is_accepted', 'is_cancelled', 'is_rejected',
+-                  'location_name', 'contact_email')
++                  'location_name', 'contact_email', 'funding', 'service')
+ 
+     @post_dump(pass_original=True)
+     def _rename_keys(self, data, orig, **kwargs):
+@@ -656,7 +666,11 @@ class ReservationLegacyAPISchema(ReservationSchema):
+         data['endDT'] = _add_server_tz(orig.end_dt)
+         data['bookedForName'] = data.pop('booked_for_name')
+         data['bookingUrl'] = data.pop('external_details_url')
++        #TODO addition by Steve Hoffmann of funding source - not sure if needed
++        #TODO addition by Steve Hoffmann of service - not sure if needed
+         data['reason'] = data.pop('booking_reason')
++        data['service'] = data.pop('service')
++        data['funding'] = data.pop('funding')
+         data['isConfirmed'] = data['isValid'] = data.pop('is_accepted')
+         data['location'] = data.pop('location_name')
+         data['booked_for_user_email'] = data.pop('contact_email')
+diff --git a/indico/modules/rb/templates/booking_list.html b/indico/modules/rb/templates/booking_list.html
+index add887cbff..bb72393926 100644
+--- a/indico/modules/rb/templates/booking_list.html
++++ b/indico/modules/rb/templates/booking_list.html
+@@ -2,7 +2,7 @@
+ {% from 'forms/_form.html' import form_row %}
+ 
+ {% block title %}
+-    {% trans %}Room bookings{% endtrans %}
++    {% trans %}Bookings{% endtrans %}
+ {% endblock %}
+ 
+ {% block content %}
+@@ -31,7 +31,7 @@
+                                     title="{{ past_title if is_past_event }}"
+                                     data-toggle="dropdown"
+                                     {% if is_past_event %}disabled{% endif %}>
+-                                {%- trans %}Book a room{% endtrans -%}
++                                {%- trans %}Book a resource{% endtrans -%}
+                             </button>
+                             <ul class="i-dropdown">
+                                 {% for day, day_params in event_rb_params.per_day_params %}
+@@ -53,7 +53,7 @@
+                                target="_blank"
+                                class="i-button highlight {{ 'disabled' if is_past_event }}"
+                                title="{{ past_title if is_past_event }}">
+-                                {%- trans %}Book a room{% endtrans -%}
++                                {%- trans %}Book a resource{% endtrans -%}
+                             </a>
+                         {% endif %}
+                     </div>
+@@ -69,7 +69,7 @@
+                         </div>
+                         <div class="toolbar">
+                             <a href="#" target="_blank" class="i-button highlight js-book-btn disabled">
+-                                {%- trans %}Book a room{% endtrans -%}
++                                {%- trans %}Book a resource{% endtrans -%}
+                             </a>
+                         </div>
+                     </div>
+@@ -85,7 +85,7 @@
+                         </div>
+                         <div class="toolbar">
+                             <a href="#" target="_blank" class="i-button highlight js-book-btn disabled">
+-                                {%- trans %}Book a room{% endtrans -%}
++                                {%- trans %}Book a resource{% endtrans -%}
+                             </a>
+                         </div>
+                     </div>
+@@ -94,11 +94,11 @@
+         {% endif %}
+         {% if links %}
+             <div>
+-                <h3>Room bookings</h3>
++                <h3>Bookings</h3>
+                 <table class="i-table-widget js-bookings-table">
+                     <thead>
+                         <tr>
+-                            <th class="room-column">{% trans %}Room{% endtrans %}</th>
++                            <th class="room-column">{% trans %}Resource{% endtrans %}</th>
+                             <th>{% trans %}Reason{% endtrans %}</th>
+                             <th>{% trans %}For whom{% endtrans %}</th>
+                             <th data-sorter="text">{% trans %}Date{% endtrans %}</th>
+diff --git a/indico/modules/users/models/export.py b/indico/modules/users/models/export.py
+index 6d830bf74f..5f7f786fa5 100644
+--- a/indico/modules/users/models/export.py
++++ b/indico/modules/users/models/export.py
+@@ -29,7 +29,7 @@ class DataExportRequestState(RichIntEnum):
+     failed = 3
+     expired = 4  # The associated file has been deleted
+ 
+-
++#TODO addition by Steve Hoffmann in titles removing Room and replace to Resource
+ class DataExportOptions(RichStrEnum):
+     __titles__ = {
+         'personal_data': _('Personal data'),
+@@ -37,7 +37,7 @@ class DataExportOptions(RichStrEnum):
+         'contribs': _('Contributions'),
+         'note_revisions': _('Minutes'),
+         'registrations': _('Registrations'),
+-        'room_booking': _('Room booking'),
++        'room_booking': _('Resource booking'),
+         'abstracts_papers': _('Abstracts & Papers'),
+         'survey_submissions': _('Survey submissions'),
+         'attachments': _('Attachments & Materials'),

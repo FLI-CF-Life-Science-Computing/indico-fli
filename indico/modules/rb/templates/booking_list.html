@@ -2,7 +2,7 @@
 {% from 'forms/_form.html' import form_row %}
 
 {% block title %}
-    {% trans %}Room bookings{% endtrans %}
+    {% trans %}Bookings{% endtrans %}
 {% endblock %}
 
 {% block content %}
@@ -31,7 +31,7 @@
                                     title="{{ past_title if is_past_event }}"
                                     data-toggle="dropdown"
                                     {% if is_past_event %}disabled{% endif %}>
-                                {%- trans %}Book a room{% endtrans -%}
+                                {%- trans %}Book a resource{% endtrans -%}
                             </button>
                             <ul class="i-dropdown">
                                 {% for day, day_params in event_rb_params.per_day_params %}
@@ -53,7 +53,7 @@
                                target="_blank"
                                class="i-button highlight {{ 'disabled' if is_past_event }}"
                                title="{{ past_title if is_past_event }}">
-                                {%- trans %}Book a room{% endtrans -%}
+                                {%- trans %}Book a resource{% endtrans -%}
                             </a>
                         {% endif %}
                     </div>
@@ -69,7 +69,7 @@
                         </div>
                         <div class="toolbar">
                             <a href="#" target="_blank" class="i-button highlight js-book-btn disabled">
-                                {%- trans %}Book a room{% endtrans -%}
+                                {%- trans %}Book a resource{% endtrans -%}
                             </a>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                         </div>
                         <div class="toolbar">
                             <a href="#" target="_blank" class="i-button highlight js-book-btn disabled">
-                                {%- trans %}Book a room{% endtrans -%}
+                                {%- trans %}Book a resource{% endtrans -%}
                             </a>
                         </div>
                     </div>
@@ -94,11 +94,11 @@
         {% endif %}
         {% if links %}
             <div>
-                <h3>Room bookings</h3>
+                <h3>Bookings</h3>
                 <table class="i-table-widget js-bookings-table">
                     <thead>
                         <tr>
-                            <th class="room-column">{% trans %}Room{% endtrans %}</th>
+                            <th class="room-column">{% trans %}Resource{% endtrans %}</th>
                             <th>{% trans %}Reason{% endtrans %}</th>
                             <th>{% trans %}For whom{% endtrans %}</th>
                             <th data-sorter="text">{% trans %}Date{% endtrans %}</th>

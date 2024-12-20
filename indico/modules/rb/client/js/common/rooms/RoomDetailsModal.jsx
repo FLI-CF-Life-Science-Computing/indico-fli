@@ -53,9 +53,10 @@ class RoomDetailsModal extends React.Component {
     }).isRequired,
   };
 
+  //TODO addition by Steve Hoffmann to replace Room by Resource
   static defaultProps = {
     promptDatesOnBook: false,
-    title: <Translate>Room Details</Translate>,
+    title: <Translate>Resource details</Translate>,
   };
 
   state = {

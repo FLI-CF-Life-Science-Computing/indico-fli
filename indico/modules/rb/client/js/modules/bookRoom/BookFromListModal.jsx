@@ -81,9 +81,10 @@ class BookFromListModal extends React.Component {
     availability: null,
     defaults: undefined,
     isPrebooking: false,
+    //TODO addition by Steve Hoffmann to remove Room and replace by Resource
     labels: {
-      bookTitle: <Translate>Book Room</Translate>,
-      preBookTitle: <Translate>Pre-Book Room</Translate>,
+      bookTitle: <Translate>Book</Translate>,
+      preBookTitle: <Translate>Pre-Book</Translate>,
       bookBtn: <Translate>Book</Translate>,
       preBookBtn: <Translate>Pre-Book</Translate>,
     },

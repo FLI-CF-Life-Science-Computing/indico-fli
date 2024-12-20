@@ -201,6 +201,8 @@ class BookRoomHook(HTTPAPIHook):
             raise HTTPAPIError('The API only supports direct bookings but this room only allows pre-bookings.')
         return False
 
+    #TODO addition by Steve Hoffmann of funding source - not sure if needed
+    #TODO addition by Steve Hoffmann of service - not sure if needed
     def api_roomBooking(self, user):
         data = MultiDict({
             'start_dt': self._params['from'],
@@ -209,7 +211,9 @@ class BookRoomHook(HTTPAPIHook):
             'repeat_interval': 0,
             'room_id': self._room.id,
             'booked_for_user': self._params['booked_for'],
-            'booking_reason': self._params['reason']
+            'booking_reason': self._params['reason'],
+            'service': self._params['service'],
+            'funding': self._params['funding']
         })
         try:
             reservation = Reservation.create_from_data(self._room, data, user)

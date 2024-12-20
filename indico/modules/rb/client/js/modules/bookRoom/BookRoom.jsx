@@ -80,11 +80,12 @@ class BookRoom extends React.Component {
     }),
   };
 
+  //TODO addition by Steve Hoffmann to remove Room and replace by Resource
   static defaultProps = {
     showSuggestions: true,
     labels: {
-      bookButton: <Translate>Book Room</Translate>,
-      preBookButton: <Translate>Pre-Book Room</Translate>,
+      bookButton: <Translate>Book</Translate>,
+      preBookButton: <Translate>Pre-Book</Translate>,
       detailsButton: <Translate>See details</Translate>,
     },
   };
