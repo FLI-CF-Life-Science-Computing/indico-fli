@@ -3543,6 +3543,12 @@ msgstr "Ich reserviere für mich selbst"
 
 #: indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
+msgid "I'm booking for myself"
+msgstr "Ich reserviere für mich selbst"
+
+
+#: indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
+#: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "I'm booking it for someone else"
 msgstr "Ich reserviere für jemand anderen."
 
@@ -3553,8 +3559,29 @@ msgstr "Reservierungsgrund"
 
 #: indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
+msgid "Booking purpose (required field)"
+msgstr "Reservierungsgrund (erforderliches Feld)"
+
+#: indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
+#: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
+msgid "External funding source (Grant number or ID)"
+msgstr "Drittmittelgeber (Drittmittelnummer)"
+
+#: indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
+#: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
+msgid "in-house project"
+msgstr "In-house Project"
+
+#: indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
+#: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
+msgid "third-party project"
+msgstr "Drittmittelprojekt"
+
+
+#: indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
+#: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Internal notes about the booking are only visible to room managers."
-msgstr "Interne Notizen zur Buchung sind nur fürManager sichtbar."
+msgstr "Interne Notizen zur Buchung sind nur für Manager sichtbar."
 
 #: indico/modules/rb/client/js/common/bookings/BookingExportModal.jsx
 #: indico/modules/rb/client/js/modules/roomList/RoomList.jsx
@@ -3659,7 +3686,7 @@ msgstr "Alle Buchungen anzeigen"
 
 #: indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
 msgid "Would you like to use this space?"
-msgstr "Möchten Sie dies Ressource nutzen?"
+msgstr "Möchten Sie diese Ressource nutzen?"
 
 #: indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
 msgid "Start booking"
@@ -3692,6 +3719,11 @@ msgstr "Sie sind nicht berechtigt diese Ressource zu reservieren."
 #: indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
 msgid "Room Details"
 msgstr "Ressourcendetails"
+
+#: indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
+msgid "Resource details"
+msgstr "Ressourcendetails"
+
 
 #: indico/modules/rb/client/js/common/rooms/RoomStats.jsx
 msgid "Times booked"
@@ -4140,6 +4172,11 @@ msgstr "Ressourcenliste"
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Bookings"
 msgstr "Reservierung"
+
+#: indico/modules/rb/client/js/components/Menu.jsx
+#: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
+msgid "Booking calendar"
+msgstr "Buchungskalender"
 
 #: indico/modules/rb/client/js/components/Room.jsx
 msgid "This space is not bookable"
@@ -5043,6 +5080,14 @@ msgstr "Ich habe meine Meinung geändert"
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Create Booking"
 msgstr "Buchung vornehmen"
+
+#: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
+msgid "Create Resource Booking"
+msgstr "Buchung vornehmen"
+
+#: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
+msgid "Create Resource Pre-booking"
+msgstr "Vorbuchung anlegen"
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Create Pre-booking"

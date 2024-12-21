@@ -15,11 +15,11 @@ import {Responsive} from 'indico/react/util';
 import MenuItem from './MenuItem';
 
 import './Menu.module.scss';
-//TODO change by Steve Hoffmann to remove Room
+
 const defaultLabels = {
   bookRoom: <Translate>Book a resource</Translate>,
   roomList: <Translate>List of resources</Translate>,
-  calendar: <Translate>Bookings</Translate>,
+  calendar: <Translate>Booking calendar</Translate>,
 };
 
 const menuItems = [

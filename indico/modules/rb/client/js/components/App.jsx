@@ -50,7 +50,7 @@ class App extends React.Component {
     renderExtraRoutes: PropTypes.func,
   };
 
-  //TODO addition by Steve Hoffmann to change landing page title
+  //TODO addition by SH to change landing page title
   static defaultProps = {
     title: Translate.string('Booking'),
     iconName: 'home',

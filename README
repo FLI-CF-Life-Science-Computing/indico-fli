@@ -41,6 +41,9 @@ To translate to other languages, after changing .po-files, one needs to run
 
 indico i18n compile indico
 
+Translations to german can be found here
+
+indico/translations/de_DE/LC_MESSAGES/messages-react.po
 
 #Summary
 

@@ -106,7 +106,7 @@ class BookRoomModal extends React.Component {
     timeInformationComponent: TimeInformation,
     link: null,
     defaultTitles: {
-      booking: <Translate>Create Ressource Booking</Translate>,
+      booking: <Translate>Create Resource Booking</Translate>,
       preBooking: <Translate>Create Pre-booking</Translate>,
     },
     bookingGracePeriod: null,
