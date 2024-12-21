@@ -37,6 +37,9 @@ indico db --all-plugins upgrade
 #room booking client side (POST) is located in src/indico/modules/rb/client/js/modules/bookRoom/serializers.js
 #room booking server side is located here src/indico/modules/rb//models/reservations.py
 
+To translate to other languages, after changing .po-files, one needs to run
+
+indico i18n compile indico
 
 
 #Summary

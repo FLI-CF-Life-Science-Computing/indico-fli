@@ -228,7 +228,7 @@ msgstr "Gehe zu..."
 
 #: indico/modules/categories/client/js/calendar.js
 msgid "No room"
-msgstr "Keine Räume gefunden"
+msgstr "Keine Ressourcen gefunden"
 
 #: indico/modules/categories/client/js/calendar.js
 msgid "No keywords"
@@ -257,7 +257,7 @@ msgstr "Veranstaltungsort"
 #: indico/modules/categories/client/js/components/CalendarLegend.jsx
 #: indico/modules/rb/client/js/components/RoomSelector.jsx
 msgid "Room"
-msgstr "Raum"
+msgstr "Ressource"
 
 #: indico/modules/categories/client/js/components/CalendarLegend.jsx
 #: indico/modules/events/editing/client/js/management/editable_type/EditableList.jsx
@@ -3572,7 +3572,7 @@ msgstr "Zeitraum"
 
 #: indico/modules/rb/client/js/common/bookings/BookingExportModal.jsx
 msgid "Rooms to export"
-msgstr "Zu exportierende Räume"
+msgstr "Zu exportierende Ressourcen"
 
 #: indico/modules/rb/client/js/common/bookings/BookingExportModal.jsx
 msgid "Please choose at least one room."
@@ -3638,7 +3638,7 @@ msgstr "Verknüpfungsmodus verlassen"
 
 #: indico/modules/rb/client/js/common/map/MapController.jsx
 msgid "Show only rooms in this area"
-msgstr "Nur Räume in diesem Bereich anzeigen"
+msgstr "Nur Ressourcen in diesem Bereich anzeigen"
 
 #: indico/modules/rb/client/js/common/map/MapController.jsx
 msgid "Select area"
@@ -3646,7 +3646,7 @@ msgstr "Ausgewählter Bereich"
 
 #: indico/modules/rb/client/js/common/map/MapController.jsx
 msgid "Zoom out to include all listed rooms"
-msgstr "Herauszoomen, um alle erfassten Räume zu berücksichtigen."
+msgstr "Herauszoomen, um alle erfassten Ressourcen zu berücksichtigen."
 
 #: indico/modules/rb/client/js/common/rooms/RoomDetailsModal.jsx
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
@@ -3828,7 +3828,7 @@ msgstr ""
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
 msgid "Add Room"
-msgstr "Raum hinzufügen"
+msgstr "Ressource hinzufügen"
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
 msgid "Edit Room Details"
@@ -3836,15 +3836,15 @@ msgstr "Ressourcendetails bearbeiten"
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
 msgid "Room has been successfully created."
-msgstr "Der Raum wurde erstellt."
+msgstr "Die Ressource wurde erstellt."
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
 msgid "Room has been successfully updated."
-msgstr "Der Raum wurde aktualisiert."
+msgstr "Die Ressource wurde aktualisiert."
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
 msgid "Room could not be updated."
-msgstr "Der Raum konnte nicht aktualisiert werden."
+msgstr "Die Ressource konnte nicht aktualisiert werden."
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
 msgid "Reset form"
@@ -3932,7 +3932,7 @@ msgstr "Reservierungsmodus"
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditPermissions.jsx
 msgid "Restricted rooms can only be booked by users defined in the room ACL"
 msgstr ""
-"Eingeschränkte Räume können nur von den im Raum ACL definierten Benutzern "
+"Eingeschränkte Ressourcen können nur von den im Raum ACL definierten Benutzern "
 "gebucht werden"
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomPhoto.jsx
@@ -4043,7 +4043,7 @@ msgstr "An {weekdays}"
 
 #: indico/modules/rb/client/js/common/timeline/TimelineItem.jsx
 msgid "Space blocked: {reason}"
-msgstr "Raum gesperrt: {reason}"
+msgstr "Ressource gesperrt: {reason}"
 
 #: indico/modules/rb/client/js/common/timeline/TimelineItem.jsx
 msgid "(You are allowed to make a booking)"
@@ -4108,7 +4108,7 @@ msgid ""
 "While in Admin Override mode, you can book any room regardless of "
 "restrictions and edit any booking."
 msgstr ""
-"Im Modus \"Admin Override\" können Sie jeden Raum unabhängig von den "
+"Im Modus \"Admin Override\" können Sie jede Ressource unabhängig von den "
 "Einschränkungen buchen und jede Buchung bearbeiten."
 
 #: indico/modules/rb/client/js/components/AdminOverrideBar.jsx
@@ -4121,7 +4121,7 @@ msgstr "Diese Seite existiert nicht."
 
 #: indico/modules/rb/client/js/components/App.jsx
 msgid "Room Booking"
-msgstr "Raumreservierung"
+msgstr "Reservierung"
 
 #: indico/modules/rb/client/js/components/BookingBootstrapForm.jsx
 #: indico/web/client/js/react/components/principals/Search.jsx
@@ -4143,7 +4143,7 @@ msgstr "Reservierung"
 
 #: indico/modules/rb/client/js/components/Room.jsx
 msgid "This space is not bookable"
-msgstr "Dieser Raum ist nicht Reservierbar"
+msgstr "Diese Ressource ist nicht reservierbar"
 
 #: indico/modules/rb/client/js/components/Room.jsx
 msgid "Checking permissions..."
@@ -4151,7 +4151,7 @@ msgstr "Zugriffsrechte werden geprüft."
 
 #: indico/modules/rb/client/js/components/Room.jsx
 msgid "This space is not publicly available"
-msgstr "Dieser Raum ist nicht öffentlich verfügbar"
+msgstr "Dieser Ressource ist nicht öffentlich verfügbar"
 
 #: indico/modules/rb/client/js/components/Room.jsx
 #: indico/modules/users/client/js/Favorites.jsx
@@ -4170,7 +4170,7 @@ msgstr "Nicht festgelegt"
 
 #: indico/modules/rb/client/js/components/RoomBasicDetails.jsx
 msgid "Room Owner"
-msgstr "Raum Besitzer"
+msgstr "Ressourcenbesitzer"
 
 #: indico/modules/rb/client/js/components/RoomBasicDetails.jsx
 msgid "1 {label}seat{/label}"
@@ -4188,7 +4188,7 @@ msgstr "Geografische Koordinaten"
 
 #: indico/modules/rb/client/js/components/RoomSelector.jsx
 msgid "There are no rooms selected."
-msgstr "Es sind keine Räume ausgewählt."
+msgstr "Es sind keine Ressourcen ausgewählt."
 
 #: indico/modules/rb/client/js/components/SidebarFooter.jsx
 msgid "Help"
@@ -4210,11 +4210,11 @@ msgstr "Meine Reservierungen"
 
 #: indico/modules/rb/client/js/components/SidebarMenu.jsx
 msgid "Bookings in My Rooms"
-msgstr "Reservierungen in meinen Räumen"
+msgstr "Reservierungen für meine Ressourcen"
 
 #: indico/modules/rb/client/js/components/SidebarMenu.jsx
 msgid "List of My Rooms"
-msgstr "Liste meiner Räume"
+msgstr "Liste meiner Ressourcen"
 
 #: indico/modules/rb/client/js/components/SidebarMenu.jsx
 msgid "My Blockings"
@@ -4263,11 +4263,11 @@ msgstr "Ort: {location}"
 
 #: indico/modules/rb/client/js/modules/admin/AdminLocationRooms.jsx
 msgid "Add room"
-msgstr "Raum hinzufügen"
+msgstr "Ressource hinzufügen"
 
 #: indico/modules/rb/client/js/modules/admin/AdminLocationRooms.jsx
 msgid "There are no rooms for the specified location."
-msgstr "Keine Räume an diesem Ort bekannt"
+msgstr "Keine Ressourcen an diesem Ort bekannt"
 
 #: indico/modules/rb/client/js/modules/admin/AdminMenu.jsx
 #: indico/modules/rb/client/js/modules/admin/SettingsPage.jsx
@@ -4281,7 +4281,7 @@ msgstr "Kartenbereiche"
 
 #: indico/modules/rb/client/js/modules/admin/AdminMenu.jsx
 msgid "Room Metadata"
-msgstr "Metadaten für den Raum"
+msgstr "Metadaten für die Ressource"
 
 #: indico/modules/rb/client/js/modules/admin/AdminMenu.jsx
 #: indico/modules/rb/client/js/modules/admin/AttributesPage.jsx
@@ -4299,11 +4299,11 @@ msgstr "Orte"
 
 #: indico/modules/rb/client/js/modules/admin/AdminRoomItem.jsx
 msgid "Are you sure you want to delete this room?"
-msgstr "Diesen Raum wirklich löschen?"
+msgstr "Diese Ressource wirklich löschen?"
 
 #: indico/modules/rb/client/js/modules/admin/AttributesPage.jsx
 msgid "This attribute is not shown in the public room details."
-msgstr "Dieses Attribut wird nicht in den öffentlichen Raumdetails angezeigt."
+msgstr "Dieses Attribut wird nicht in den öffentlichen Ressourcendetails angezeigt."
 
 #: indico/modules/rb/client/js/modules/admin/AttributesPage.jsx
 #: indico/modules/rb/client/js/modules/admin/EquipmentTypeList.jsx
@@ -4314,8 +4314,8 @@ msgstr "Derzeitig unbenutzt"
 #: indico/modules/rb/client/js/modules/admin/AttributesPage.jsx
 msgid "Used in {count}1{/count} room"
 msgid_plural "Used in {count} rooms"
-msgstr[0] "In {count}1{/count} Raum benutzt"
-msgstr[1] "In {count} Räumen benutzt"
+msgstr[0] "In {count}1{/count} Ressource benutzt"
+msgstr[1] "In {count} Ressourcen benutzt"
 
 #: indico/modules/rb/client/js/modules/admin/AttributesPage.jsx
 msgid "Are you sure you want to delete the attribute {name}?"
@@ -4324,8 +4324,8 @@ msgstr "Merkmal {name} wirklich löschen?"
 #: indico/modules/rb/client/js/modules/admin/AttributesPage.jsx
 msgid "It is currently used in {count}1{/count} room."
 msgid_plural "It is currently used in {count} rooms."
-msgstr[0] "Wird derzeit in {count}1{/count} Raum benutzt."
-msgstr[1] "Wird derzeit in {count} Räumen benutzt."
+msgstr[0] "Wird derzeit in {count}1{/count} Ressource benutzt."
+msgstr[1] "Wird derzeit in {count} Ressourcen benutzt."
 
 #: indico/modules/rb/client/js/modules/admin/AttributesPage.jsx
 msgid "Add attribute"
@@ -4346,8 +4346,8 @@ msgstr "Dieser Gerätetyp ermöglicht es {name} zu nutzen."
 #: indico/modules/rb/client/js/modules/admin/EquipmentTypeList.jsx
 msgid "Available in {count}1{/count} room"
 msgid_plural "Available in {count} rooms"
-msgstr[0] "In {count}1{/count} Raum verfügbar"
-msgstr[1] "In {count} Räumen verfügbar"
+msgstr[0] "Für {count}1{/count} Ressource verfügbar"
+msgstr[1] "Für {count} Ressourcen verfügbar"
 
 #: indico/modules/rb/client/js/modules/admin/EquipmentTypeList.jsx
 #: indico/modules/rb/client/js/modules/admin/RoomFeatureList.jsx
@@ -4361,8 +4361,8 @@ msgstr "Ausstattung {name} wirklich löschen?"
 #: indico/modules/rb/client/js/modules/admin/EquipmentTypeList.jsx
 msgid "It is currently used by {count}1{/count} room."
 msgid_plural "It is currently used by {count} rooms."
-msgstr[0] "Derzeit von {count}1{/count} Raum benutzt"
-msgstr[1] "Derzeit von {count} Räumen benutzt"
+msgstr[0] "Derzeit von {count}1{/count} Ressource benutzt"
+msgstr[1] "Derzeit von {count} Ressourcen benutzt"
 
 #: indico/modules/rb/client/js/modules/admin/EquipmentTypeList.jsx
 msgid "Equipment types"
@@ -4378,17 +4378,17 @@ msgstr "Benutzerdefiniert"
 
 #: indico/modules/rb/client/js/modules/admin/LocationPage.jsx
 msgid "No rooms"
-msgstr "Keine Räume gefunden"
+msgstr "Keine Ressourcen gefunden"
 
 #: indico/modules/rb/client/js/modules/admin/LocationPage.jsx
 msgid "{count}1{/count} room"
 msgid_plural "{count} rooms"
-msgstr[0] "{count}1{/count} Raum"
-msgstr[1] "{count} Räume"
+msgstr[0] "{count}1{/count} Ressource"
+msgstr[1] "{count} Ressourcen"
 
 #: indico/modules/rb/client/js/modules/admin/LocationPage.jsx
 msgid "Room name format"
-msgstr "Namensformat der Räume"
+msgstr "Namensformat der Ressourcen"
 
 #: indico/modules/rb/client/js/modules/admin/LocationPage.jsx
 msgid "Missing placeholder: number"
@@ -4405,7 +4405,7 @@ msgid ""
 "Specify the room name format using any of the following placeholders: "
 "{placeholders}"
 msgstr ""
-"Geben Sie das Format des Raumnamens mit einem der folgenden Platzhalter an: "
+"Geben Sie das Format des Ressourcennamens mit einem der folgenden Platzhalter an: "
 "{placeholders}"
 
 #: indico/modules/rb/client/js/modules/admin/LocationPage.jsx
@@ -4417,7 +4417,7 @@ msgid ""
 "Indico can show a link to an external map when a room is associated to an "
 "event."
 msgstr ""
-"Indico kann einen Link zu einer externen Karte anzeigen, wenn ein Raum mit "
+"Indico kann einen Link zu einer externen Karte anzeigen, wenn eine Ressource mit "
 "einer Veranstaltung verknüpft ist."
 
 #: indico/modules/rb/client/js/modules/admin/LocationPage.jsx
@@ -4519,7 +4519,7 @@ msgstr "Nicht für Veranstaltungen"
 
 #: indico/modules/rb/client/js/modules/admin/SettingsPage.jsx
 msgid "Specify who has access to the room booking system."
-msgstr "Geben Sie an, wer Zugang zum Raumbuchungssystem hat."
+msgstr "Geben Sie an, wer Zugang zum Ressourcenbuchungssystem hat."
 
 #: indico/modules/rb/client/js/modules/admin/SettingsPage.jsx
 msgid "Authorized users"
@@ -4530,7 +4530,7 @@ msgid ""
 "Restrict access to the room booking system to these users/groups. If empty, "
 "all logged-in users have access."
 msgstr ""
-"Schränken Sie den Zugriff auf das Raumbuchungssystem auf diese "
+"Schränken Sie den Zugriff auf das Ressourcenbuchungssystem auf diese "
 "Benutzer/Gruppen ein. Wenn leer, haben alle eingeloggten Benutzer Zugang."
 
 #: indico/modules/rb/client/js/modules/admin/SettingsPage.jsx
@@ -4541,30 +4541,30 @@ msgstr "Administratoren"
 msgid "Grant full room booking admin permissions to these users/groups."
 msgstr ""
 "Erteilen den Benutzern/Gruppen die vollen Administrationrechte für "
-"Raumbuchungen."
+"Ressourcenbuchungen."
 
 #: indico/modules/rb/client/js/modules/admin/SettingsPage.jsx
 msgid "Allow owners/managers to edit their rooms"
-msgstr "Erlaube Eigentümern/Verwaltern ihre Räume zu bearbeiten"
+msgstr "Erlaube Eigentümern/Verwaltern ihre Ressourcen zu bearbeiten"
 
 #: indico/modules/rb/client/js/modules/admin/SettingsPage.jsx
 msgid ""
 "By default only admins can modify rooms, but you can allow room owners and "
 "managers to modify them as well."
 msgstr ""
-"Standardmäßig können nur Administratoren Räume ändern, aber Sie können auch "
-"Raumbesitzern und Managern erlauben, sie zu ändern."
+"Standardmäßig können nur Administratoren Ressourcen ändern, aber Sie können auch "
+"Ressourcenbesitzern und Managern erlauben, sie zu ändern."
 
 #: indico/modules/rb/client/js/modules/admin/SettingsPage.jsx
 msgid "Hide the Room Booking system from unauthorized users"
-msgstr "Verbergen Sie das Raumbuchungssystem vor unbefugten Benutzern"
+msgstr "Verbergen Sie das Ressourcenbuchungssystem vor unbefugten Benutzern"
 
 #: indico/modules/rb/client/js/modules/admin/SettingsPage.jsx
 msgid ""
 "If enabled, links to the Room Booking system will not be shown to users who "
 "do not have access to it."
 msgstr ""
-"Wenn diese Option aktiviert ist, werden Links zum Raumbuchungssystem "
+"Wenn diese Option aktiviert ist, werden Links zum Ressourcenbuchungssystem "
 "Benutzern, die keinen Zugriff darauf haben, nicht angezeigt."
 
 #: indico/modules/rb/client/js/modules/admin/SettingsPage.jsx
@@ -4577,7 +4577,7 @@ msgid ""
 "area in which your rooms are located."
 msgstr ""
 "Wenn Sie die Karte verwenden möchten, geben Sie die URL zu einem Tileserver "
-"an, der das Gebiet abdeckt, in dem sich Ihre Räume befinden."
+"an, der das Gebiet abdeckt, in dem sich Ihre Ressourcen befinden."
 
 #: indico/modules/rb/client/js/modules/admin/SettingsPage.jsx
 #: indico/web/client/js/react/forms/validators.js
@@ -4652,8 +4652,8 @@ msgid ""
 "Allow room owners/managers to add internal notes to bookings which are only "
 "visible to other room owners/managers."
 msgstr ""
-"Erlauben Sie Raumbesitzern/-managern, interne Notizen zu Buchungen "
-"hinzuzufügen, die nur für andere Raumbesitzer/-verwalter sichtbar sind."
+"Erlauben Sie Ressourcenbesitzern/-managern, interne Notizen zu Buchungen "
+"hinzuzufügen, die nur für andere Ressourcenbesitzer/-verwalter sichtbar sind."
 
 #: indico/modules/rb/client/js/modules/admin/SettingsPage.jsx
 msgid "Disable booking during event creation"
@@ -4664,7 +4664,7 @@ msgid ""
 "Specify the IDs of categories for which booking a room during event creation"
 " will not be suggested."
 msgstr ""
-"Geben Sie die IDs von Kategorien an, für die die Buchung eines Raums bei der"
+"Geben Sie die IDs von Kategorien an, für die die Buchung einer Ressource bei der"
 " Erstellung einer Veranstaltung nicht vorgeschlagen wird."
 
 #: indico/modules/rb/client/js/modules/admin/SettingsPage.jsx
@@ -4678,8 +4678,8 @@ msgid ""
 "past. Leaving the field empty will allow any start date that is not in the "
 "past without restricting the start time as well."
 msgstr ""
-"Normalerweise ist es nicht erlaubt, einen Raum in der Vergangenheit zu "
-"buchen. Mit dieser Einstellung können Sie einen Raum mit einem Startdatum "
+"Normalerweise ist es nicht erlaubt, eine Ressource in der Vergangenheit zu "
+"buchen. Mit dieser Einstellung können Sie eine Ressource mit einem Startdatum "
 "innerhalb einer bestimmten Anzahl von Stunden in der Vergangenheit buchen. "
 "Wenn Sie das Feld leer lassen, können Sie ein beliebiges Startdatum wählen, "
 "das nicht in der Vergangenheit liegt, ohne die Startzeit zu beschränken."
@@ -4687,8 +4687,8 @@ msgstr ""
 #: indico/modules/rb/client/js/modules/blockings/BlockingCard.jsx
 msgid "{count} room"
 msgid_plural "{count} rooms"
-msgstr[0] "{count} Raum"
-msgstr[1] "{count} Räume"
+msgstr[0] "{count} Ressource"
+msgstr[1] "{count} Ressourcen"
 
 #: indico/modules/rb/client/js/modules/blockings/BlockingCard.jsx
 msgid "Created by {createdBy}"
@@ -4712,11 +4712,11 @@ msgstr "Nach Datum filtern"
 
 #: indico/modules/rb/client/js/modules/blockings/BlockingFilterBar.jsx
 msgid "Blockings in my rooms"
-msgstr "Sperrungen in meinen Räumen"
+msgstr "Sperrungen in meinen Ressourcenn"
 
 #: indico/modules/rb/client/js/modules/blockings/BlockingFilterBar.jsx
 msgid "Show only blockings in my rooms"
-msgstr "Nur Sperrungen in meinen Räumen anzeigen"
+msgstr "Nur Sperrungen in meinen Ressourcenn anzeigen"
 
 #: indico/modules/rb/client/js/modules/blockings/BlockingFilterBar.jsx
 msgid "My blockings"
@@ -4741,7 +4741,7 @@ msgstr "Bitte Grund der Sperrung angeben."
 
 #: indico/modules/rb/client/js/modules/blockings/BlockingModal.jsx
 msgid "Please choose at least one room for this blocking."
-msgstr "Bitte wählen Sie mindestens einen Raum für die Buchung."
+msgstr "Bitte wählen Sie mindestens eine Ressource für die Buchung."
 
 #: indico/modules/rb/client/js/modules/blockings/BlockingModal.jsx
 msgid "Blocking has been accepted"
@@ -4749,7 +4749,7 @@ msgstr "Sperrung eingetragen"
 
 #: indico/modules/rb/client/js/modules/blockings/BlockingModal.jsx
 msgid "Pending approval by a room manager"
-msgstr "Ausstehend bis zur Genehmigung durch einen Raummanager"
+msgstr "Ausstehend bis zur Genehmigung durch einen Ressourcenmanager"
 
 #: indico/modules/rb/client/js/modules/blockings/BlockingModal.jsx
 msgid "Booking rejected by {rejectedBy}"
@@ -4791,11 +4791,11 @@ msgid ""
 "also block rooms you do not own - however, those blockings have to be "
 "approved by the owners of those rooms."
 msgstr ""
-"Wenn Sie Räume sperren, kann niemand außer Ihnen, den Verwaltern der Räume "
+"Wenn Sie Ressourcen sperren, kann niemand außer Ihnen, den Verwaltern der Ressourcen "
 "und den Benutzern/Gruppen, die Sie in der Liste \"Erlaubte "
-"Benutzer/Gruppen\" angeben, Buchungen für die angegebenen Räume in dem "
-"angegebenen Zeitraum vornehmen. Sie können auch Räume sperren, die Sie nicht"
-" besitzen - diese Sperrungen müssen jedoch von den Eigentümern dieser Räume "
+"Benutzer/Gruppen\" angeben, Buchungen für die angegebenen Ressourcen in dem "
+"angegebenen Zeitraum vornehmen. Sie können auch Ressourcen sperren, die Sie nicht"
+" besitzen - diese Sperrungen müssen jedoch von den Eigentümern dieser Ressourcen "
 "genehmigt werden."
 
 #: indico/modules/rb/client/js/modules/blockings/BlockingModal.jsx
@@ -4804,9 +4804,9 @@ msgid ""
 "term events and never for long-lasting periods. If you wish to somehow mark "
 "a room as unusable, please ask its owner to set it as such."
 msgstr ""
-"Bitte beachten Sie, dass die Sperrung von Räumen nur für kurzfristige "
+"Bitte beachten Sie, dass die Sperrung von Ressourcenn nur für kurzfristige "
 "Veranstaltungen und niemals für längere Zeiträume verwendet werden sollte. "
-"Falls Sie einen Raum aus irgendeinem Grund als unbenutzbar kennzeichnen "
+"Falls Sie eine Ressource aus irgendeinem Grund als unbenutzbar kennzeichnen "
 "möchten, fragen Sie bitte den Eigentümer, ob er ihn als solchen kennzeichnen"
 " möchte."
 
@@ -4824,19 +4824,19 @@ msgstr "Autorisierte Nutzer/Gruppen"
 
 #: indico/modules/rb/client/js/modules/blockings/BlockingModal.jsx
 msgid "Rooms to block"
-msgstr "Räume zum blocken"
+msgstr "Ressourcen zum blocken"
 
 #: indico/modules/rb/client/js/modules/blockings/BlockingModal.jsx
 msgid "Blocked rooms"
-msgstr "Gesperrte Räume"
+msgstr "Gesperrte Ressourcen"
 
 #: indico/modules/rb/client/js/modules/blockings/BlockingModal.jsx
 msgid ""
 "You can accept and reject blockings for your rooms on the list by using the "
 "action buttons on the right side of the room name."
 msgstr ""
-"Sie können Sperrungen für Ihre Räume auf der Liste annehmen und ablehnen, "
-"indem Sie die Aktionsschaltflächen rechts neben dem Raumnamen verwenden."
+"Sie können Sperrungen für Ihre Ressourcen auf der Liste annehmen und ablehnen, "
+"indem Sie die Aktionsschaltflächen rechts neben dem Ressourcennamen verwenden."
 
 #: indico/modules/rb/client/js/modules/blockings/BlockingModal.jsx
 msgid "The blocking has been successfully updated."
@@ -4852,15 +4852,15 @@ msgstr "Sie können ihre Buchung {link}hier{/link} einsehen."
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookFromListModal.jsx
 msgid "The space will be free on the selected time slot(s)"
-msgstr "Der Raum ist in dem/den ausgewählten Zeitfenster(n) frei"
+msgstr "Die Ressource ist in dem/den ausgewählten Zeitfenster(n) frei"
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookFromListModal.jsx
 msgid "The space won't be available on one or more days"
-msgstr "Der Raum ist an einem oder mehreren Tagen nicht verfügbar"
+msgstr "Die Ressource ist an einem oder mehreren Tagen nicht verfügbar"
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookFromListModal.jsx
 msgid "Space cannot be booked."
-msgstr "Raum kann nicht reserviert werden."
+msgstr "Ressource kann nicht reserviert werden."
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookFromListModal.jsx
 msgid "One or more bookings would conflict with yours."
@@ -4876,12 +4876,12 @@ msgstr "Buchungen in der Vergangenheit sind nicht zulässig."
 #: indico/modules/rb/client/js/modules/bookRoom/BookFromListModal.jsx
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoom.jsx
 msgid "Book Room"
-msgstr "Raum reservieren"
+msgstr "Ressource reservieren"
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookFromListModal.jsx
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoom.jsx
 msgid "Pre-Book Room"
-msgstr "Raum vorbuchen"
+msgstr "Ressource vorbuchen"
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookFromListModal.jsx
 msgid "Book"
@@ -4939,17 +4939,17 @@ msgstr[0] ""
 "event will automatically be updated."
 msgstr[1] ""
 "Sie haben Veranstaltungen, die während der ausgewählten Zeit stattfinden. "
-"Wenn Sie diesen Raum für eine Ihrer Veranstaltungen buchen möchten, wählen "
-"Sie ihn bitte unten aus. Der Raum für die ausgewählte Veranstaltung wird "
+"Wenn Sie diese Ressource für eine Ihrer Veranstaltungen buchen möchten, wählen "
+"Sie ihn bitte unten aus. Der Ressource für die ausgewählte Veranstaltung wird "
 "automatisch aktualisiert."
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "The space has been successfully pre-booked!"
-msgstr "Der Raum ist erfolgreich vorgebucht!"
+msgstr "Die Ressource ist erfolgreich vorgebucht!"
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "The space has been successfully booked!"
-msgstr "Der Raum wurde erfolgreich gebucht!"
+msgstr "Die Ressource wurde erfolgreich gebucht!"
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "You can consult your pre-booking {link}here{/link}."
@@ -4961,7 +4961,7 @@ msgstr "Sie können Ihre Buchung {link}hier{/link} einsehen."
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Couldn't book the room"
-msgstr "Raum konnte nicht reserviert werden"
+msgstr "Ressource konnte nicht reserviert werden"
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Booking conflicts"
@@ -4983,8 +4983,8 @@ msgid ""
 "A Pre-Booking has to be approved by the room managers before you can use the"
 " space in question."
 msgstr ""
-"Eine Vorreservierung muss von den Raumverantwortlichen genehmigt werden, "
-"bevor Sie den betreffenden Raum nutzen können."
+"Eine Vorreservierung muss von den Verantwortlichen genehmigt werden, "
+"bevor Sie die betreffende Ressource nutzen können."
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Pre-Booking conflicts"
@@ -5008,29 +5008,29 @@ msgstr ""
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Assign the room {room} to this event"
-msgstr "Den Raum {room} dieser Veranstaltung zuordnen."
+msgstr "Die Ressource {room} dieser Veranstaltung zuordnen."
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Assign the room {room} to this contribution"
-msgstr "Den Raum {room} diesem Beitrag zuordnen"
+msgstr "Die Ressource {room} diesem Beitrag zuordnen"
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Assign the room {room} to this session block"
-msgstr "Den Raum {room} diesem Sitzungsblock zuweisen"
+msgstr "Die Ressource {room} diesem Sitzungsblock zuweisen"
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Assign the room {room} to this event (instead of {oldRoom})"
 msgstr ""
-"Weise den Raum {room} dieser Veranstaltung zu (anstelle von {oldRoom})"
+"Weise die Ressource {room} dieser Veranstaltung zu (anstelle von {oldRoom})"
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Assign the room {room} to this contribution (instead of {oldRoom})"
-msgstr "Weise den Raum {room} diesem Beitrag zu (anstelle von {oldRoom})"
+msgstr "Weise die Ressource {room} diesem Beitrag zu (anstelle von {oldRoom})"
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Assign the room {room} to this session block (instead of {oldRoom})"
 msgstr ""
-"Weise den Raum {room} diesem Sitzungsblock zu (anstelle von {oldRoom})"
+"Weise die Ressource {room} diesem Sitzungsblock zu (anstelle von {oldRoom})"
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "Internal notes (optional)"
@@ -5105,12 +5105,12 @@ msgid ""
 "Bookings in this room cannot last this long and will be shortened "
 "accordingly"
 msgstr ""
-"Buchungen in diesem Raum können nicht so lange dauern und werden "
+"Buchungen für diese Ressource können nicht so lange dauern und werden "
 "entsprechend gekürzt."
 
 #: indico/modules/rb/client/js/modules/bookRoom/BookingTimeline.jsx
 msgid "There are no rooms matching the criteria."
-msgstr "Es gibt keine Räume, die die Kriterien erfüllen"
+msgstr "Es gibt keine Ressourcen, die die Kriterien erfüllen"
 
 #: indico/modules/rb/client/js/modules/bookRoom/SearchResultCount.jsx
 msgid "Total{count}"
@@ -5118,7 +5118,7 @@ msgstr "Gesamt{count}"
 
 #: indico/modules/rb/client/js/modules/bookRoom/SearchResultCount.jsx
 msgid "Number of spaces that match your filtering criteria."
-msgstr "Anzahl der Räume, die Ihren Filterkriterien entsprechen."
+msgstr "Anzahl der Ressourcen, die Ihren Filterkriterien entsprechen."
 
 #: indico/modules/rb/client/js/modules/bookRoom/SearchResultCount.jsx
 msgid "Available{count}"
@@ -5126,7 +5126,7 @@ msgstr "Verfügbar{count}"
 
 #: indico/modules/rb/client/js/modules/bookRoom/SearchResultCount.jsx
 msgid "Spaces that are free on that time slot."
-msgstr "Räume, die zu diesem Zeitpunkt frei sind."
+msgstr "Ressourcen, die zu diesem Zeitpunkt frei sind."
 
 #: indico/modules/rb/client/js/modules/bookRoom/SearchResultCount.jsx
 msgid "Unavailable{count}"
@@ -5135,7 +5135,7 @@ msgstr "Nicht verfügbar{count}"
 #: indico/modules/rb/client/js/modules/bookRoom/SearchResultCount.jsx
 msgid "Spaces unavailable during that time slot (click for details)."
 msgstr ""
-"Räume, die während dieser Zeit nicht verfügbar sind (für Details bitte "
+"Ressourcen, die während dieser Zeit nicht verfügbar sind (für Details bitte "
 "anklicken)."
 
 #: indico/modules/rb/client/js/modules/bookRoom/SearchResultCount.jsx
@@ -5144,19 +5144,19 @@ msgstr "Unerlaubt"
 
 #: indico/modules/rb/client/js/modules/bookRoom/SearchResultCount.jsx
 msgid "Spaces you are not authorized to book."
-msgstr "Räume die Sie nicht buchen dürfen."
+msgstr "Ressourcen die Sie nicht buchen dürfen."
 
 #: indico/modules/rb/client/js/modules/bookRoom/SearchResultCount.jsx
 msgid "No known spaces match your query"
-msgstr "Keine Räume, die Ihrer Anfrage entsprechen"
+msgstr "Keine Ressourcen, die Ihrer Anfrage entsprechen"
 
 #: indico/modules/rb/client/js/modules/bookRoom/SearchResultCount.jsx
 msgid "No spaces are available during that time slot"
-msgstr "In diesem Zeitfenster sind keine Räume mehr frei"
+msgstr "In diesem Zeitfenster sind keine Ressourcen mehr frei"
 
 #: indico/modules/rb/client/js/modules/bookRoom/UnavailableRoomsModal.jsx
 msgid "Unavailable Rooms"
-msgstr "Unverfügbare Räume"
+msgstr "Unverfügbare Ressourcen"
 
 #: indico/modules/rb/client/js/modules/calendar/Calendar.jsx
 msgid "Show only my bookings"
@@ -5172,7 +5172,7 @@ msgstr "Abgelehnte/stornierte Buchungen anzeigen"
 
 #: indico/modules/rb/client/js/modules/calendar/Calendar.jsx
 msgid "Show unused spaces"
-msgstr "Zeige ungenutzte Räume"
+msgstr "Zeige ungenutzte Ressourcen"
 
 #: indico/modules/rb/client/js/modules/calendar/Calendar.jsx
 msgid "Hide unused spaces"
@@ -5200,7 +5200,7 @@ msgstr "Verknüpfung zu {bookedFor}"
 
 #: indico/modules/rb/client/js/modules/calendar/CalendarListView.jsx
 msgid "This booking is pending confirmation by the room owner"
-msgstr "Diese Buchung muss noch vom Eigentümer des Raums bestätigt werden."
+msgstr "Diese Buchung muss noch vom Eigentümer der Ressource bestätigt werden."
 
 #: indico/modules/rb/client/js/modules/calendar/CalendarListView.jsx
 msgid "Booked for {bookedFor}"
@@ -5224,7 +5224,7 @@ msgstr "Nur in meinen Favoriten suchen"
 
 #: indico/modules/rb/client/js/modules/landing/LandingStatistics.jsx
 msgid "Active rooms"
-msgstr "Aktive Räume"
+msgstr "Aktive Ressourcen"
 
 #: indico/modules/rb/client/js/modules/landing/LandingStatistics.jsx
 msgid "Buildings"
@@ -5261,11 +5261,11 @@ msgstr "Zeige nur..."
 
 #: indico/modules/rb/client/js/modules/roomList/RoomList.jsx
 msgid "Block rooms"
-msgstr "Räume reservieren"
+msgstr "Ressourcen reservieren"
 
 #: indico/modules/rb/client/js/modules/roomList/RoomList.jsx
 msgid "There are no rooms matching the criteria"
-msgstr "Es gibt keine Räume, die den Kriterien entsprechen"
+msgstr "Es gibt keine Ressourcen, die den Kriterien entsprechen"
 
 #: indico/modules/rb/client/js/modules/roomList/RoomList.jsx
 msgid "There is {count} match"
@@ -5283,15 +5283,15 @@ msgstr "Detaillierte Ausstattung anschauen"
 
 #: indico/modules/rb/client/js/modules/roomList/filters/ShowOnlyForm.jsx
 msgid "My favorite rooms"
-msgstr "Meine bevorzugten Räume"
+msgstr "Meine bevorzugten Ressourcen"
 
 #: indico/modules/rb/client/js/modules/roomList/filters/ShowOnlyForm.jsx
 msgid "Rooms I manage"
-msgstr "Räume, die ich manage"
+msgstr "Ressourcen, die ich manage"
 
 #: indico/modules/rb/client/js/modules/roomList/filters/ShowOnlyForm.jsx
 msgid "Rooms I am authorized to book"
-msgstr "Räume, die ich buchen darf"
+msgstr "Ressourcen, die ich buchen darf"
 
 #: indico/modules/rb/client/js/util.jsx
 msgid "Once"
