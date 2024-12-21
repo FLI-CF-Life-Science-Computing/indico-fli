@@ -3550,7 +3550,7 @@ msgstr "Ich reserviere für mich selbst"
 #: indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "I'm booking it for someone else"
-msgstr "Ich reserviere für jemand anderen."
+msgstr "Ich reserviere für jemand anderen"
 
 #: indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
@@ -3565,12 +3565,12 @@ msgstr "Reservierungsgrund (erforderliches Feld)"
 #: indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "External funding source (Grant number or ID)"
-msgstr "Drittmittelgeber (Drittmittelnummer)"
+msgstr "Externe Finanzierungsquelle (Drittmittelnummer oder ID)"
 
 #: indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx
 msgid "in-house project"
-msgstr "In-house Project"
+msgstr "In-house Projekt"
 
 #: indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx
 #: indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx

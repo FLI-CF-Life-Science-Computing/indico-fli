@@ -87,37 +87,3 @@ This may have been caused by the nullIfEmpty (now removed where comment) in the 
 The existence of the added fields was confirmed and it is stored properly in the data base table
 roombooking.reservations (SELECT * from roombooking.reservations;)
 
-
-
-## List of changes
-
-grep -r Steve indico/__init__.py indico/__pycache__ indico/cli indico/core indico/global.d.ts indico/indico.conf indico/legacy indico/logging.yaml indico/logging.yaml.sample indico/migrations indico/modules indico/moment_locales.yaml indico/testing indico/util indico/vendor
-indico/modules/rb/models/reservations.py:    #TODO addition by SH for funding source
-indico/modules/rb/models/reservations.py:    #TODO addition by SH for service request
-indico/modules/rb/models/reservations.py:    #TODO addition by SH to always add internal notes to data base original force_internal_note=False
-indico/modules/rb/models/reservations.py:    #TODO addition by SH to always add internal notes to data base original force_internal_note=False
-indico/modules/rb/models/reservations.py:    #TODO addition by SH to always add internal notes to data base original force_internal_note=False
-indico/modules/rb/models/reservations.py:        #TODO addition by SH to send back service and funding fields
-indico/modules/rb/models/reservations.py:             #TODO addition by SH to pretty print service and funding fields in log
-indico/modules/rb/api.py:    #TODO addition by SH of funding source
-indico/modules/rb/api.py:    #TODO addition by SH of service
-indico/modules/rb/schemas.py:        #TODO addition by SH of service
-indico/modules/rb/schemas.py:        #TODO addition by SH of funding source
-indico/modules/rb/schemas.py:        #TODO addition by SH of funding source
-indico/modules/rb/schemas.py:        #TODO addition by SH of service
-indico/modules/rb/schemas.py:    #TODO addition by SH of funding source
-indico/modules/rb/schemas.py:     #TODO addition by SH of service
-indico/modules/rb/schemas.py:        #TODO addition by SH of funding source
-indico/modules/rb/schemas.py:        #TODO addition by SH of service
-indico/modules/rb/schemas.py:        #TODO addition by SH of funding source
-indico/modules/rb/schemas.py:        #TODO addition by SH of service
-indico/modules/rb/controllers/backend/bookings.py:            #TODO addition by SH for funding source
-indico/modules/rb/controllers/backend/bookings.py:                   #TODO addition by SH for service
-indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx:          {/*TODO addition by SH request for service*/}
-indico/modules/rb/client/js/common/bookings/BookingEditForm.jsx:          {/*TODO addition by SH request for funding source */}
-indico/modules/rb/client/js/common/bookings/BookingEdit.jsx:      //TODO addition by SH to update services
-indico/modules/rb/client/js/modules/bookRoom/serializers.js:  //TODO addition by SH funding
-indico/modules/rb/client/js/modules/bookRoom/serializers.js:  //TODO addition by SH service
-indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx:                  {/*TODO addition by SH request for service*/}
-indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx:                  {/*TODO addition by SH request for funding source */}
-indico/modules/rb/client/js/modules/bookRoom/BookRoomModal.jsx:          //TODO replacing reason with reasontxt and overriding reason by SH to transfer funding and service info
