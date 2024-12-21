@@ -3874,7 +3874,6 @@ msgstr "Ressourcendetails bearbeiten"
 msgid "Edit Resource Details"
 msgstr "Ressourcendetails bearbeiten"
 
-
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
 msgid "Room has been successfully created."
 msgstr "Die Ressource wurde erstellt."
@@ -3884,7 +3883,7 @@ msgid "Room has been successfully updated."
 msgstr "Die Ressource wurde aktualisiert."
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
-msgid "The resource has been successfully updated."
+msgid "Resource has been successfully updated."
 msgstr "Die Ressource wurde aktualisiert."
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
