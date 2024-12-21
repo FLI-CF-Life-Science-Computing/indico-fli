@@ -3863,8 +3863,17 @@ msgid "Add Room"
 msgstr "Ressource hinzufügen"
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
+msgid "Add Resource"
+msgstr "Ressource hinzufügen"
+
+#: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
 msgid "Edit Room Details"
 msgstr "Ressourcendetails bearbeiten"
+
+#: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
+msgid "Edit Resource Details"
+msgstr "Ressourcendetails bearbeiten"
+
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
 msgid "Room has been successfully created."
@@ -3872,6 +3881,10 @@ msgstr "Die Ressource wurde erstellt."
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
 msgid "Room has been successfully updated."
+msgstr "Die Ressource wurde aktualisiert."
+
+#: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
+msgid "The resource has been successfully updated."
 msgstr "Die Ressource wurde aktualisiert."
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditModal.jsx
@@ -3964,7 +3977,7 @@ msgstr "Reservierungsmodus"
 #: indico/modules/rb/client/js/common/rooms/edit/RoomEditPermissions.jsx
 msgid "Restricted rooms can only be booked by users defined in the room ACL"
 msgstr ""
-"Eingeschränkte Ressourcen können nur von den im Raum ACL definierten Benutzern "
+"Eingeschränkte Ressourcen können nur von den im Ressourcen-ACL definierten Benutzern "
 "gebucht werden"
 
 #: indico/modules/rb/client/js/common/rooms/edit/RoomPhoto.jsx
@@ -4442,7 +4455,7 @@ msgid ""
 "Specify the room name format using any of the following placeholders: "
 "{placeholders}"
 msgstr ""
-"Geben Sie das Format des Ressourcennamens mit einem der folgenden Platzhalter an: "
+"Geben Sie das Format des Ressourcen-Orte mit einem der folgenden Platzhalter an: "
 "{placeholders}"
 
 #: indico/modules/rb/client/js/modules/admin/LocationPage.jsx
