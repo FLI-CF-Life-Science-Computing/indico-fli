@@ -53,11 +53,9 @@ function validate({usage, user, reason}, requireReason) {
   if (usage === 'someone' && !user) {
     errors.user = Translate.string('Please specify a user');
   }
-  //TODO alternative by Steve Hoffmann changing reason to reasontxt to override value with concat
   if (requireReason && !reason) {
     errors.reason = Translate.string('You need to provide a reason');
-  }
-  //TODO alternative by Steve Hoffmann changing reason to reasontxt to override value with concat
+  } 
   if (reason && reason.length < 3) {
     errors.reason = Translate.string('Reason must be at least 3 characters');
   }
@@ -181,7 +179,7 @@ class BookRoomModal extends React.Component {
       return (
         <Message color="red">
           <Message.Header>
-            <Translate>Couldn't book the room</Translate>
+            <Translate>Couldn't book the resource</Translate>
           </Message.Header>
           {submitError}
         </Message>
@@ -306,7 +304,7 @@ class BookRoomModal extends React.Component {
             </Translate>
           </Message.Header>
           <Translate>
-            A Pre-Booking has to be approved by the room managers before you can use the space in
+            A pre-booking has to be approved by the resource managers before you can use the space in
             question.
           </Translate>
         </Message.Content>
@@ -489,31 +487,31 @@ class BookRoomModal extends React.Component {
   renderLink(link, disabled) {
     const {room} = this.props;
     const assignMessages = {
-      event: Translate.string('Assign the room {room} to this event', {room: room.name}),
-      contribution: Translate.string('Assign the room {room} to this contribution', {
+      event: Translate.string('Assign the resource {room} to this event', {room: room.name}),
+      contribution: Translate.string('Assign the resource {room} to this contribution', {
         room: room.name,
       }),
-      sessionBlock: Translate.string('Assign the room {room} to this session block', {
+      sessionBlock: Translate.string('Assign the resource {room} to this session block', {
         room: room.name,
       }),
     };
     const replaceMessages = {
       event: (
         <Translate>
-          Assign the room <Param name="room" wrapper={<em />} value={room.name} /> to this event
+          Assign the resource <Param name="room" wrapper={<em />} value={room.name} /> to this event
           (instead of <Param name="oldRoom" wrapper={<em />} value={link.ownRoomName} />)
         </Translate>
       ),
       contribution: (
         <Translate>
-          Assign the room <Param name="room" wrapper={<em />} value={room.name} /> to this
+          Assign the resource <Param name="room" wrapper={<em />} value={room.name} /> to this
           contribution (instead of{' '}
           <Param name="oldRoom" wrapper={<em />} value={link.ownRoomName} />)
         </Translate>
       ),
       sessionBlock: (
         <Translate>
-          Assign the room <Param name="room" wrapper={<em />} value={room.name} /> to this session
+          Assign the resource <Param name="room" wrapper={<em />} value={room.name} /> to this session
           block (instead of <Param name="oldRoom" wrapper={<em />} value={link.ownRoomName} />)
         </Translate>
       ),
@@ -621,9 +619,7 @@ class BookRoomModal extends React.Component {
                         />
                       )}
                     </FavoritesProvider>
-                  </FieldCondition>
-    
-                  {/*TODO alternative by Steve Hoffmann replace reason with reasontxt*/}
+                  </FieldCondition> 
                   <FinalTextArea
                     name="reason"
                     nullIfEmpty
@@ -631,7 +627,6 @@ class BookRoomModal extends React.Component {
                     disabled={fprops.submitSucceeded}
                     required={requireReason}  
                   />
-                  {/*TODO addition by Steve Hoffmann third party (service)*/}
                   <Form.Group styleName="usage-radio">
                     <FinalRadio
                       name="service"
@@ -645,9 +640,7 @@ class BookRoomModal extends React.Component {
                       label={Translate.string("third-party project")}
                       disabled={fprops.submitSucceeded}
                     /> 
-            </Form.Group>
-      {/*TODO addition by Steve Hoffmann request for funding source */} 
-                  
+            </Form.Group>             
                   <FieldCondition when="service" is="true">
                    <div style={{ marginTop: '15px' }}>
                   <FinalTextArea
@@ -691,9 +684,7 @@ class BookRoomModal extends React.Component {
                     </h3>
                     <Translate as="p">
                       Internal notes about the booking are only visible to room managers.
-                    </Translate>
-
-                  {/*TODO alternative by Steve Hoffmann replace internal with internaltxt*/}
+                    </Translate> 
                     <FinalTextArea name="internaltxt" disabled={fprops.submitSucceeded} />
                   </Segment>
                 </Form>
@@ -751,8 +742,7 @@ class BookRoomModal extends React.Component {
           onSubmit={this.submitBooking}
           validate={values => validate(values, requireReason)}
           decorators={[formDecorator]}
-          render={renderModalContent}
-          //TODO alternative by Steve Hoffmann: replace reason with reasontxt
+          render={renderModalContent} 
           initialValues={{usage: 'myself', user: null, linkBack, extraFields: null, service:'false', reason: '', funding: ''}}
           subscription={{
             submitSucceeded: true,
@@ -792,7 +782,7 @@ export default connect(
         resetRelatedEvents: actions.resetRelatedEvents,
         createBooking: (data, props) => {
          
-          //TODO replacing reason with reasontxt and overriding reason by Steve Hoffmann to transfer funding and service info 
+          //TODO replacing reason with reasontxt and overriding reason to transfer funding and service info 
           //to piggy back information in the reason field. This is an ugly hack alternative but may be necessary to use
           //if db-variant fails to work. HOWTO: replace reason by reasontxt and internalNote by internaltxt above and
           //concat values.

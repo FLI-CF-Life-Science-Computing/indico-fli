@@ -55,10 +55,10 @@ class EquipmentTypeList extends React.PureComponent {
               <Param name="count" wrapper={<strong />}>
                 1
               </Param>{' '}
-              room
+              resource
             </Singular>
             <Plural>
-              Available in <Param name="count" wrapper={<strong />} value={numRooms} /> rooms
+              Available in <Param name="count" wrapper={<strong />} value={numRooms} /> resources
             </Plural>
           </PluralTranslate>
         )}
@@ -108,11 +108,11 @@ class EquipmentTypeList extends React.PureComponent {
               <Param name="count" wrapper={<strong />}>
                 1
               </Param>{' '}
-              room.
+              resource.
             </Singular>
             <Plural>
               It is currently used by <Param name="count" wrapper={<strong />} value={numRooms} />{' '}
-              rooms.
+              resourcess.
             </Plural>
           </PluralTranslate>
         </>

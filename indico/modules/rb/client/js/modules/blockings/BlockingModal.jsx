@@ -34,7 +34,7 @@ function validate({dates, reason, rooms}) {
     errors.reason = Translate.string('Please provide the reason for the blocking.');
   }
   if (!rooms || !rooms.length) {
-    errors.rooms = Translate.string('Please choose at least one room for this blocking.');
+    errors.rooms = Translate.string('Please choose at least one resource for this blocking.');
   }
   return errors;
 }
@@ -132,7 +132,7 @@ class BlockingModal extends React.Component {
     if (state === 'accepted') {
       popupContent = Translate.string('Blocking has been accepted');
     } else if (state === 'pending') {
-      popupContent = Translate.string('Pending approval by a room manager');
+      popupContent = Translate.string('Pending approval by a resources manager');
     } else {
       popupContent = (
         <>
@@ -336,11 +336,11 @@ class BlockingModal extends React.Component {
                   <Icon name="lightbulb" />
                   <Message.Content>
                     <Translate>
-                      When blocking rooms nobody but you, the rooms' managers and those users/groups
+                      When blocking resources nobody but you, the resources' managers and those users/groups
                       you specify in the "Allowed users/groups" list will be able to create bookings
-                      for the specified rooms in the given timeframe. You can also block rooms you
+                      for the specified resources in the given timeframe. You can also block resources you
                       do not own - however, those blockings have to be approved by the owners of
-                      those rooms.
+                      those resources.
                     </Translate>
                   </Message.Content>
                 </Message>
@@ -348,9 +348,9 @@ class BlockingModal extends React.Component {
                   <Icon name="warning sign" />
                   <Message.Content>
                     <Translate>
-                      Please take into account that rooms blockings should only be used for short
+                      Please take into account that resource blockings should only be used for short
                       term events and never for long-lasting periods. If you wish to somehow mark a
-                      room as unusable, please ask its owner to set it as such.
+                      resource as unusable, please ask its owner to set it as such.
                     </Translate>
                   </Message.Content>
                 </Message>
@@ -387,8 +387,8 @@ class BlockingModal extends React.Component {
                   name="rooms"
                   label={
                     mode === 'create'
-                      ? Translate.string('Rooms to block')
-                      : Translate.string('Blocked rooms')
+                      ? Translate.string('Resources to block')
+                      : Translate.string('Blocked resources')
                   }
                   required={mode !== 'view'}
                   renderRoomActions={this.renderRoomState}

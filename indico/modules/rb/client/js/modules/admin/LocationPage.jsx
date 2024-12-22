@@ -82,7 +82,7 @@ class LocationPage extends React.PureComponent {
       </List.Header>
       <List.Description>
         {!numRooms ? (
-          <Translate>No rooms</Translate>
+          <Translate>No resources</Translate>
         ) : (
           <PluralTranslate count={numRooms}>
             <Singular>
@@ -106,7 +106,7 @@ class LocationPage extends React.PureComponent {
       <FinalInput
         name="room_name_format"
         required
-        label={Translate.string('Room name format')}
+        label={Translate.string('Resource name format')}
         validate={val => {
           const rv = v.required(val);
           if (rv) {
@@ -143,7 +143,7 @@ class LocationPage extends React.PureComponent {
         label={Translate.string('Map URL template')}
         description={
           <Translate>
-            Indico can show a link to an external map when a room is associated to an event.
+            Indico can show a link to an external map when a resource is associated to an event.
           </Translate>
         }
         selection

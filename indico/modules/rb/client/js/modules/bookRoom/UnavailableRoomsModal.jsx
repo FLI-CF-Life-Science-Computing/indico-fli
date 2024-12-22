@@ -99,7 +99,7 @@ class UnavailableRoomsModal extends React.Component {
     return (
       <Modal open onClose={onClose} size="large" closeIcon>
         <Modal.Header className="legend-header">
-          <Translate>Unavailable Rooms</Translate>
+          <Translate>Unavailable resources</Translate>
           <Responsive.Portrait orElse={timelineHeader}>
             <Responsive.Tablet andLarger>{timelineHeader}</Responsive.Tablet>
           </Responsive.Portrait>

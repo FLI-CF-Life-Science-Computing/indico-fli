@@ -164,7 +164,7 @@ export default class RoomBasicDetails extends React.PureComponent {
               )}
             </li>
             <li className="has-icon">
-              <AnnotatedIcon name="id badge outline" text={Translate.string('Room Owner')} />
+              <AnnotatedIcon name="id badge outline" text={Translate.string('Resource owner')} />
               {owner}
             </li>
             <li className="has-icon">

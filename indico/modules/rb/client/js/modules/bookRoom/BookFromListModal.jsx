@@ -80,8 +80,7 @@ class BookFromListModal extends React.Component {
     onClose: () => {},
     availability: null,
     defaults: undefined,
-    isPrebooking: false,
-    //TODO addition by Steve Hoffmann to remove Room and replace by Resource
+    isPrebooking: false, 
     labels: {
       bookTitle: <Translate>Book</Translate>,
       preBookTitle: <Translate>Pre-Book</Translate>,

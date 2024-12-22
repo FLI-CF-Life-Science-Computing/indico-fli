@@ -52,8 +52,7 @@ class RoomDetailsModal extends React.Component {
       openBookingDetails: PropTypes.func.isRequired,
     }).isRequired,
   };
-
-  //TODO addition by Steve Hoffmann to replace Room by Resource
+ 
   static defaultProps = {
     promptDatesOnBook: false,
     title: <Translate>Resource details</Translate>,

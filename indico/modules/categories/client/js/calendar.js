@@ -281,9 +281,9 @@ import CalendarLegend from './components/CalendarLegend';
             events,
             items: rooms,
             attr: 'roomId',
-            defaultTitle: Translate.string('No room'),
+            defaultTitle: Translate.string('No resource'),
             rootId: 0,
-            rootTitle: Translate.string('No room'),
+            rootTitle: Translate.string('No resource'),
             sortMethod: collator.compare,
           });
           // if there are no locations no need to indent

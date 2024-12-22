@@ -141,7 +141,7 @@ export default class BookingSuggestion extends React.PureComponent {
               {shorten}
             )}
             tooltip={Translate.string(
-              'Bookings in this room cannot last this long and will be shortened accordingly'
+              'Bookings for this resource cannot last this long and will be shortened accordingly'
             )}
           />
         )}

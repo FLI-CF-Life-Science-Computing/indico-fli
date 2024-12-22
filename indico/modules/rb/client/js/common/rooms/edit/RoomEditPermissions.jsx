@@ -31,7 +31,7 @@ export default function RoomEditPermissions({
         </h5>
         <p className="field-description">
           <Translate>
-            Restricted rooms can only be booked by users defined in the room ACL
+            Restricted resources can only be booked by users defined in the resource ACL
           </Translate>
         </p>
         <Form.Group>

@@ -59,7 +59,7 @@ function AdminLocationRooms({location, isFetching, fetchRooms, filters: {text}})
         </Translate>
         <Button
           size="small"
-          content={Translate.string('Add room')}
+          content={Translate.string('Add resource')}
           onClick={() => setAdding(true)}
         />
       </Header>
@@ -73,7 +73,7 @@ function AdminLocationRooms({location, isFetching, fetchRooms, filters: {text}})
         </Item.Group>
       ) : (
         <Message info>
-          <Translate>There are no rooms for the specified location.</Translate>
+          <Translate>There are no resources for the specified location.</Translate>
         </Message>
       )}
       {adding && (

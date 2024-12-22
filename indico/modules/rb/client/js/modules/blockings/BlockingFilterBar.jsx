@@ -63,12 +63,12 @@ class BlockingFilterBar extends React.Component {
             <ResponsivePopup
               trigger={
                 <Button
-                  content={Translate.string('Blockings in my rooms')}
+                  content={Translate.string('Blockings of my resources')}
                   primary={myRooms}
                   onClick={() => setFilterParameter('myRooms', !myRooms)}
                 />
               }
-              content={Translate.string('Show only blockings in my rooms')}
+              content={Translate.string('Show only blockings of my resources')}
             />
             <ResponsivePopup
               trigger={

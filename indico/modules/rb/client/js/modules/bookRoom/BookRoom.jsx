@@ -79,8 +79,7 @@ class BookRoom extends React.Component {
       detailsButton: IndicoPropTypes.i18n,
     }),
   };
-
-  //TODO addition by Steve Hoffmann to remove Room and replace by Resource
+ 
   static defaultProps = {
     showSuggestions: true,
     labels: {

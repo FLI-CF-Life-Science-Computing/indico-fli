@@ -390,8 +390,7 @@ class BookingEditForm extends React.Component {
             required={requireReason}
             disabled={submitSucceeded}
           />
-          {/*TODO addition by Steve Hoffmann request for service*/}
-      {/**/}<Form.Group>
+          <Form.Group>
              <FinalRadio
               name="service"
               value={false}
@@ -404,14 +403,13 @@ class BookingEditForm extends React.Component {
               label={Translate.string("third-party project")}
               disabled={submitSucceeded}
           />
-          </Form.Group>{/**/}
-          {/*TODO addition by Steve Hoffmann request for funding source */} 
-      {/**/} <FinalTextArea
+          </Form.Group>
+            <FinalTextArea
              name="funding" 
              placeholder={Translate.string('External funding source (Grant number or ID)')}
              disabled={submitSucceeded}
              required={false}
-          />  {/**/}                  
+          />               
         </Segment>
         {renderPluginComponents('rb-booking-form-extra-fields', {
           room,

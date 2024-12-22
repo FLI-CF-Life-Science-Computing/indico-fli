@@ -68,7 +68,7 @@ function AdminMenu({locations, isFetchingLocations, isMapEnabled, actions: {clea
       )}
       <Menu.Item>
         <Menu.Header>
-          <Translate>Room Metadata</Translate>
+          <Translate>Resource metadata</Translate>
         </Menu.Header>
         <Menu.Menu>
           <Menu.Item>

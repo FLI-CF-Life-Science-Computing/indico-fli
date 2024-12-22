@@ -31,7 +31,7 @@ export default class BlockingCard extends React.Component {
       return blockedRooms[0].room.name;
     }
 
-    return PluralTranslate.string('{count} room', '{count} rooms', blockedRooms.length, {
+    return PluralTranslate.string('{count} resource', '{count} resources', blockedRooms.length, {
       count: blockedRooms.length,
     });
   }

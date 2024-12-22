@@ -232,7 +232,7 @@ class CalendarListView extends React.Component {
             {!isAccepted && (
               <Popup
                 trigger={<Label color="yellow" icon="clock" corner="right" size="tiny" />}
-                content={Translate.string('This booking is pending confirmation by the room owner')}
+                content={Translate.string('This booking is pending confirmation by the resource owner')}
                 position="right center"
               />
             )}

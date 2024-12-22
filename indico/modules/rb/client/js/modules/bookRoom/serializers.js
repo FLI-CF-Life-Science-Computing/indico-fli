@@ -19,9 +19,7 @@ export const ajax = {
   repeat_interval: recurrenceIntervalSerializer,
   recurrence_weekdays: recurrenceWeekdaysSerializer,
   reason: ({reason}) => reason,
-  //TODO addition by Steve Hoffmann funding
   funding: ({funding}) => funding,
-  //TODO addition by Steve Hoffmann service
   service: ({service}) => service,
   user: {
     onlyIf: ({usage}) => usage === 'someone',

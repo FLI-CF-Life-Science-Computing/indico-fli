@@ -18,7 +18,7 @@ import * as landingActions from './actions';
 import * as landingSelectors from './selectors';
 
 const defaultLabels = {
-  activeRooms: <Translate>Active rooms</Translate>,
+  activeRooms: <Translate>Active resources</Translate>,
   buildings: <Translate>Buildings</Translate>,
   bookingsToday: <Translate>Bookings today</Translate>,
   pendingBookings: <Translate>Active booking requests</Translate>,

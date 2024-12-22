@@ -297,13 +297,12 @@ function RoomEditModal({roomId, locationId, onClose, afterCreation}) {
     }
     return (
       <Modal open onClose={closeModal} size="large" centered={false} closeIcon>
-        <Modal.Header>
-          {/*TODO addition by Steve Hoffmann to remove Room and replace it by Resource*/}
+        <Modal.Header> 
           {isNewRoom ? <Translate>Add Resource</Translate> : <Translate>Edit Resource Details</Translate>}
         </Modal.Header>
         <Modal.Content>
           <Message styleName="submit-message" positive hidden={!afterCreation || wasEverUpdated}>
-            <Translate>Room has been successfully created.</Translate>
+            <Translate>Resource has been successfully created.</Translate>
           </Message>
           <FormSpy subscription={{submitSucceeded: true, modifiedSinceLastSubmit: true}}>
             {({submitSucceeded, modifiedSinceLastSubmit}) => {

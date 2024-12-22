@@ -47,7 +47,7 @@ class ShowOnlyForm extends FilterFormComponent {
                 <>
                   <Icon name="star" />
                   <span>
-                    <Translate>My favorite rooms</Translate>
+                    <Translate>My favorite resources</Translate>
                   </span>
                 </>
               }
@@ -65,7 +65,7 @@ class ShowOnlyForm extends FilterFormComponent {
                 <>
                   <Icon name="user" />
                   <span>
-                    <Translate>Rooms I manage</Translate>
+                    <Translate>Resources I manage</Translate>
                   </span>
                 </>
               }
@@ -83,7 +83,7 @@ class ShowOnlyForm extends FilterFormComponent {
                 <>
                   <Icon name="lock open" />
                   <span>
-                    <Translate>Rooms I am authorized to book</Translate>
+                    <Translate>Resources I am authorized to book</Translate>
                   </span>
                 </>
               }

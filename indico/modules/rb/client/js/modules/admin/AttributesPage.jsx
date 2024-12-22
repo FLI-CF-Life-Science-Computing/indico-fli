@@ -45,7 +45,7 @@ class AttributesPage extends React.PureComponent {
         <span styleName="name">{title}</span>
         {hidden && (
           <Popup trigger={<Icon name="hide" color="blue" />}>
-            <Translate>This attribute is not shown in the public room details.</Translate>
+            <Translate>This attribute is not shown in the public resource details.</Translate>
           </Popup>
         )}
       </List.Header>
@@ -59,10 +59,10 @@ class AttributesPage extends React.PureComponent {
               <Param name="count" wrapper={<strong />}>
                 1
               </Param>{' '}
-              room
+              resource
             </Singular>
             <Plural>
-              Used in <Param name="count" wrapper={<strong />} value={numRooms} /> rooms
+              Used in <Param name="count" wrapper={<strong />} value={numRooms} /> resources
             </Plural>
           </PluralTranslate>
         )}
@@ -101,11 +101,11 @@ class AttributesPage extends React.PureComponent {
                 <Param name="count" wrapper={<strong />}>
                   1
                 </Param>{' '}
-                room.
+                resource.
               </Singular>
               <Plural>
                 It is currently used in <Param name="count" wrapper={<strong />} value={numRooms} />{' '}
-                rooms.
+                resources.
               </Plural>
             </PluralTranslate>
           </>

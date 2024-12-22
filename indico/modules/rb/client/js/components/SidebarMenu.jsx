@@ -67,14 +67,14 @@ function SidebarMenu({
     {
       key: 'bookings_my_rooms',
       icon: 'checkmark',
-      text: Translate.string('Bookings in My Rooms'),
+      text: Translate.string('Bookings for my resources'),
       onClick: gotoBookingsInMyRooms,
       onlyIf: hasOwnedRooms,
     },
     {
       key: 'my_rooms',
       icon: 'user',
-      text: Translate.string('List of My Rooms'),
+      text: Translate.string('List of my resources'),
       onClick: gotoMyRoomsList,
       onlyIf: hasOwnedRooms,
     },

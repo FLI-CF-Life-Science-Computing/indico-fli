@@ -82,7 +82,7 @@ class _BookingTimelineComponent extends React.Component {
     } = this.props;
     const emptyMessage = showEmptyMessage ? (
       <Message warning>
-        <Translate>There are no rooms matching the criteria.</Translate>
+        <Translate>There are no resources matching the criteria.</Translate>
       </Message>
     ) : null;
 

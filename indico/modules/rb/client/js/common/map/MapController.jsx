@@ -173,7 +173,7 @@ class MapController extends React.Component {
         classes={`search-control ${searchVisible || searchEnabled ? 'visible' : ''}`}
       >
         <Checkbox
-          label={Translate.string('Show only rooms in this area')}
+          label={Translate.string('Show only resources in this area')}
           checked={searchEnabled}
           onChange={(e, data) => toggleMapSearch(data.checked, bounds)}
           styleName="map-control-content"
@@ -209,7 +209,7 @@ class MapController extends React.Component {
       <RoomBookingMapControl position="bottomright">
         <Popup
           trigger={showAllButton}
-          content={Translate.string('Zoom out to include all listed rooms')}
+          content={Translate.string('Zoom out to include all listed resources')}
         />
       </RoomBookingMapControl>
     );

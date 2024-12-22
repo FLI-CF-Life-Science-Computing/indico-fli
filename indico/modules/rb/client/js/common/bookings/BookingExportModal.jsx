@@ -70,10 +70,10 @@ export default function BookingExportModal({rooms, onClose}) {
             />
             <FinalRoomSelector
               name="rooms"
-              label={Translate.string('Rooms to export')}
+              label={Translate.string('Resources to export')}
               validate={val => {
                 if (!val || !val.length) {
-                  return Translate.string('Please choose at least one room.');
+                  return Translate.string('Please choose at least one resource.');
                 }
               }}
               required

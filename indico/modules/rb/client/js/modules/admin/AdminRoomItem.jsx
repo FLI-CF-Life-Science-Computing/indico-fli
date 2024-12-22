@@ -51,7 +51,7 @@ function AdminRoomItem({room, locationId, deleteRoom, fetchRooms}) {
       )}
       <Confirm
         header={Translate.string('Confirm deletion')}
-        content={Translate.string('Are you sure you want to delete this room?')}
+        content={Translate.string('Are you sure you want to delete this resource?')}
         confirmButton={<Button content={Translate.string('Delete')} negative />}
         cancelButton={Translate.string('Cancel')}
         open={deleting}

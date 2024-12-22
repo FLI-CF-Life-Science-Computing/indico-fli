@@ -197,7 +197,7 @@ class RoomSelector extends React.Component {
             )}
             {rooms.length === 0 && (
               <Message info>
-                <Translate>There are no rooms selected.</Translate>
+                <Translate>There are no resources selected.</Translate>
               </Message>
             )}
           </Grid.Column>

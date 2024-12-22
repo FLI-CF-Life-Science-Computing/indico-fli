@@ -97,7 +97,7 @@ const SettingsPage = props => {
             <FinalUnloadPrompt />
             <Message>
               <Message.Header>
-                <Translate>Specify who has access to the room booking system.</Translate>
+                <Translate>Specify who has access to the resource booking system.</Translate>
               </Message.Header>
               <Form.Group widths="equal">
                 <FinalPrincipalList
@@ -107,7 +107,7 @@ const SettingsPage = props => {
                   label={Translate.string('Authorized users')}
                   description={
                     <Translate>
-                      Restrict access to the room booking system to these users/groups. If empty,
+                      Restrict access to the resource booking system to these users/groups. If empty,
                       all logged-in users have access.
                     </Translate>
                   }
@@ -119,7 +119,7 @@ const SettingsPage = props => {
                   label={Translate.string('Administrators')}
                   description={
                     <Translate>
-                      Grant full room booking admin permissions to these users/groups.
+                      Grant full resource booking admin permissions to these users/groups.
                     </Translate>
                   }
                 />
@@ -127,20 +127,20 @@ const SettingsPage = props => {
             </Message>
             <FinalCheckbox
               name="managers_edit_rooms"
-              label={Translate.string('Allow owners/managers to edit their rooms')}
+              label={Translate.string('Allow owners/managers to edit their resources')}
               description={
                 <Translate>
-                  By default only admins can modify rooms, but you can allow room owners and
+                  By default only admins can modify resources, but you can allow resource owners and
                   managers to modify them as well.
                 </Translate>
               }
             />
             <FinalCheckbox
               name="hide_module_if_unauthorized"
-              label={Translate.string('Hide the Room Booking system from unauthorized users')}
+              label={Translate.string('Hide the resource booking system from unauthorized users')}
               description={
                 <Translate>
-                  If enabled, links to the Room Booking system will not be shown to users who do not
+                  If enabled, links to the resource booking system will not be shown to users who do not
                   have access to it.
                 </Translate>
               }
@@ -151,7 +151,7 @@ const SettingsPage = props => {
               description={
                 <Translate>
                   If you want to use the map, specify the URL to a tileserver covering the area in
-                  which your rooms are located.
+                  which your resources are located.
                 </Translate>
               }
               nullIfEmpty
@@ -279,8 +279,8 @@ const SettingsPage = props => {
               label={Translate.string('Enable internal booking notes')}
               description={
                 <Translate>
-                  Allow room owners/managers to add internal notes to bookings which are only
-                  visible to other room owners/managers.
+                  Allow resource owners/managers to add internal notes to bookings which are only
+                  visible to other resource owners/managers.
                 </Translate>
               }
             />
@@ -291,7 +291,7 @@ const SettingsPage = props => {
               label={Translate.string('Disable booking during event creation')}
               description={
                 <Translate>
-                  Specify the IDs of categories for which booking a room during event creation will
+                  Specify the IDs of categories for which booking a resource during event creation will
                   not be suggested.
                 </Translate>
               }
@@ -306,7 +306,7 @@ const SettingsPage = props => {
               description={
                 <Translate>
                   Usually booking a space in the past is not allowed. This setting will allow to
-                  book a room with a start date within a specified number of hours in the past.
+                  book a resource with a start date within a specified number of hours in the past.
                   Leaving the field empty will allow any start date that is not in the past without
                   restricting the start time as well.
                 </Translate>

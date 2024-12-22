@@ -122,8 +122,7 @@ class BookingEdit extends React.Component {
       timeSlot,
       usage,
       user: bookedForUser.identifier,
-      reason: bookingReason,
-      //TODO addition by Steve Hoffmann to update services
+      reason: bookingReason, 
       service,
       funding,
       internalNote,

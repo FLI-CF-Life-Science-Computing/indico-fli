@@ -148,7 +148,7 @@ class RoomList extends React.Component {
     const {selectionMode, selection} = this.state;
     const menuOptions = [
       {
-        text: Translate.string('Block rooms'),
+        text: Translate.string('Block resources'),
         value: 'block-rooms',
         onClick: this.setSelectionMode('blocking'),
         icon: 'lock',
@@ -209,7 +209,7 @@ class RoomList extends React.Component {
             <div styleName="results-count">
               {results.length === 0 &&
                 !isSearching &&
-                Translate.string('There are no rooms matching the criteria')}
+                Translate.string('There are no resources matching the criteria')}
               {results.length !== 0 && (
                 <PluralTranslate count={results.length}>
                   <Singular>

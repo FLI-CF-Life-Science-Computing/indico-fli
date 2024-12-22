@@ -119,7 +119,7 @@ function CalendarLegend({
   const options = [
     {text: Translate.string('Category'), value: 'category'},
     {text: Translate.string('Venue'), value: 'location'},
-    {text: Translate.string('Room'), value: 'room'},
+    {text: Translate.string('Resource'), value: 'room'},
   ];
   if (filterByKeywords) {
     options.push({text: Translate.string('Keywords'), value: 'keywords'});
