@@ -21,7 +21,7 @@
                 {% if reservation.repeat_frequency == RepeatFrequency.NEVER -%}
                     {% trans room=reservation.room.full_name, name=reservation.booked_for_name, date=reservation.start_dt|format_skeleton('EEEEddMMyyyy'),
                              from=reservation.start_dt|format_time(), to=reservation.end_dt|format_time(), linebreak='\n' -%}
-                        The conference room {{ room }}{{ linebreak }}
+                        The resource {{ room }}{{ linebreak }}
                         has been pre-booked for {{ name }}{{ linebreak }}
                         on {{ date }} from {{ from }} to {{ to }}.
                     {%- endtrans %}
@@ -29,7 +29,7 @@
                     {% trans room=reservation.room.full_name, name=reservation.booked_for_name, map=RepeatMapping.get_message(reservation.repeat_frequency,
                              reservation.repeat_interval, reservation.recurrence_weekdays), from=reservation.start_dt|format_skeleton('EEEEddMMyyyy'), to=reservation.end_dt|format_skeleton('EEEEddMMyyyy'),
                              start=reservation.start_dt|format_time(), end=reservation.end_dt|format_time(), linebreak='\n' -%}
-                        The conference room {{ room }}{{ linebreak }}
+                        The resource {{ room }}{{ linebreak }}
                         has been pre-booked for {{ name }}{{ linebreak }}
                         {{ map }} from {{ from }} to {{ to }} between {{ start }} and {{ end }}.
                     {%- endtrans %}
@@ -38,7 +38,7 @@
                 {% if reservation.repeat_frequency == RepeatFrequency.NEVER -%}
                     {% trans room=reservation.room.full_name, name=reservation.booked_for_name, date=reservation.start_dt|format_skeleton('EEEEddMMyyyy'),
                              from=reservation.start_dt|format_time(), to=reservation.end_dt|format_time(), linebreak='\n' -%}
-                        The conference room {{ room }}{{ linebreak }}
+                        The resource {{ room }}{{ linebreak }}
                         has been booked for {{ name }}{{ linebreak }}
                         on {{ date }} from {{ from }} to {{ to }}.
                     {%- endtrans %}
@@ -46,7 +46,7 @@
                     {% trans room=reservation.room.full_name, name=reservation.booked_for_name, map=RepeatMapping.get_message(reservation.repeat_frequency,
                              reservation.repeat_interval, reservation.recurrence_weekdays), from=reservation.start_dt|format_skeleton('EEEEddMMyyyy'), to=reservation.end_dt|format_skeleton('EEEEddMMyyyy'),
                              start=reservation.start_dt|format_time(), end=reservation.end_dt|format_time(), linebreak='\n' -%}
-                        The conference room {{ room }}{{ linebreak }}
+                        The resource {{ room }}{{ linebreak }}
                         has been booked for {{ name }}{{ linebreak }}
                         {{ map }} from {{ from }} to {{ to }} between {{ start }} and {{ end }}.
                     {%- endtrans %}
@@ -62,14 +62,14 @@
             {%- endif %}
             {% filter wordwrap(width=72, break_long_words=false) %}
                 {% trans %}
-                    If you end up not needing this room, please cancel the booking from the
-                    booking details so that the room can be booked by somebody else.
+                    If you end up not needing this resource, please cancel the booking from the
+                    booking details so that the resource can be booked by somebody else.
                 {% endtrans %}
             {%- endfilter %}
             {% filter wordwrap(width=72, break_long_words=false) %}
                 {% trans %}
                     Please be aware that in special (rare) cases the person responsible
-                    for this room may reject your booking. Should that happen you will
+                    for this resource may reject your booking. Should that happen you will
                     be instantly notified by e-mail.
                 {%- endtrans -%}
             {%- endfilter -%}
@@ -80,7 +80,7 @@
             {% trans %}Note:{% endtrans %}
             {% filter wordwrap(width=60, break_long_words=false) -%}
                 {% trans %}
-                    Your pre-booking is NOT YET ACCEPTED by a room manager.
+                    Your pre-booking is NOT YET ACCEPTED by a resource manager.
                     Please be aware that pre-bookings are subject to acceptance
                     or rejection. Expect an e-mail with acceptance/rejection
                     information.

@@ -10384,7 +10384,7 @@ msgstr "Buchen Sie den Veranstaltungsort"
 
 #: indico/modules/events/management/templates/settings.html
 msgid "There is no active booking linked to this event."
-msgstr "Es gbit keine aktive Buchung zu dieser Veranstaltung."
+msgstr "Es gibt keine aktive Buchung zu dieser Veranstaltung."
 
 #: indico/modules/events/management/templates/settings.html
 msgid "Book the room"
@@ -18842,8 +18842,20 @@ msgid "Room:"
 msgstr "Raum"
 
 #: indico/modules/rb/templates/emails/blockings/awaiting_confirmation_email_to_manager.txt
+#: indico/modules/rb/templates/emails/blockings/state_email_to_user.txt
+#: indico/modules/rb/templates/emails/reservations/reminders/finishing_bookings.html
+#: indico/modules/rb/templates/emails/reservations/reminders/upcoming_occurrence.html
+#: indico/modules/rb/templates/emails/reservations/reservation_info.txt
+msgid "Resource:"
+msgstr "Ressource:"
+
+#: indico/modules/rb/templates/emails/blockings/awaiting_confirmation_email_to_manager.txt
 msgid "Rooms:"
 msgstr "Räume"
+
+#: indico/modules/rb/templates/emails/blockings/awaiting_confirmation_email_to_manager.txt
+msgid "Resources:"
+msgstr "Ressourcen:"
 
 #: indico/modules/rb/templates/emails/blockings/awaiting_confirmation_email_to_manager.txt
 #: indico/modules/rb/templates/emails/blockings/state_email_to_user.txt
@@ -18862,16 +18874,32 @@ msgid "Room blocking ACCEPTED"
 msgstr "Zimmersperre AKZEPTIERT"
 
 #: indico/modules/rb/templates/emails/blockings/state_email_to_user.txt
+msgid "Resource blocking ACCEPTED"
+msgstr "Ressourcensperrung AKZEPTIERT"
+
+#: indico/modules/rb/templates/emails/blockings/state_email_to_user.txt
 msgid "Room blocking REJECTED"
 msgstr "Raumsperre ABGELEHNT"
+
+#: indico/modules/rb/templates/emails/blockings/state_email_to_user.txt
+msgid "Resource blocking REJECTED"
+msgstr "Ressourcensperrung ABGELEHNT"
 
 #: indico/modules/rb/templates/emails/blockings/state_email_to_user.txt
 msgid "Your room blocking request has been ACCEPTED by a room manager."
 msgstr "Ihre Anfrage zur Zimmersperrung wurde von einem Raummanager AKZEPTIERT."
 
 #: indico/modules/rb/templates/emails/blockings/state_email_to_user.txt
+msgid "Your resource blocking request has been ACCEPTED by a resource manager."
+msgstr "Ihre Anfrage zur Ressourcensperrung wurde von einem Ressourcenmanager AKZEPTIERT."
+
+#: indico/modules/rb/templates/emails/blockings/state_email_to_user.txt
 msgid "Your room blocking request has been REJECTED by a room manager."
 msgstr "Ihre Anfrage zur Zimmersperrung wurde von einem Raummanager ABGELEHNT."
+
+#: indico/modules/rb/templates/emails/blockings/state_email_to_user.txt
+msgid "Your resource blocking request has been REJECTED by a resource manager."
+msgstr "Ihre Anfrage zur Ressourcensperrung wurde von einem Ressourcenmanager ABGELEHNT."
 
 #: indico/modules/rb/templates/emails/blockings/state_email_to_user.txt
 msgid "Action: ACCEPTED"
@@ -18908,6 +18936,11 @@ msgstr "[%(room)s] Buchung abgebrochen (%(start)s)"
 msgid "A booking in your room '%(room)s' has been CANCELLED by the user."
 msgstr "Eine Reservierung in Ihrem Raum '%(room)s' wurde vom Benutzer abgebrochen."
 
+#: indico/modules/rb/templates/emails/reservations/cancellation_email_to_manager.txt
+#, python-format
+msgid "A booking for your resource '%(room)s' has been CANCELLED by the user."
+msgstr "Eine Reservierung für Ihre Ressource '%(room)s' wurde vom Benutzer abgebrochen."
+
 #: indico/modules/rb/templates/emails/reservations/cancellation_email_to_user.txt
 msgid "You have CANCELLED your booking:"
 msgstr "Sie haben Ihre Buchung ABGEBROCHEN:"
@@ -18922,7 +18955,13 @@ msgstr "[%(room)s] Buchungsgenehmigung geänderter Zustand (%(start)s)"
 msgid ""
 "A booking in a room you manage has been MODIFIED and the changes require "
 "approval."
-msgstr "Eine Buchung in einem von Ihnen verwalteten Raum wurde GEÄNDERT und die Änderungen müssen genehmigt werden."
+msgstr "Eine Buchung einer von Ihnen verwalteten Ressource wurde GEÄNDERT und die Änderungen müssen genehmigt werden."
+
+#: indico/modules/rb/templates/emails/reservations/change_state_email_to_manager.txt
+msgid ""
+"A booking of a resource you manage has been MODIFIED and the changes require "
+"approval."
+msgstr "Eine Buchung einer von Ihnen verwalteten Ressource wurde GEÄNDERT und die Änderungen müssen genehmigt werden."
 
 #: indico/modules/rb/templates/emails/reservations/change_state_email_to_user.txt
 msgid "Your booking has been MODIFIED and the changes require approval."
@@ -18942,9 +18981,22 @@ msgid ""
 msgstr "Eine Reservierung in Ihrem Raum '%(room)s' wurde von einem Raumverwalter BESTÄTIGT."
 
 #: indico/modules/rb/templates/emails/reservations/confirmation_email_to_manager.txt
+#, python-format
+msgid ""
+"A booking for your resource '%(room)s' has been CONFIRMED by a resource manager."
+msgstr "Eine Reservierung für Ihre Ressource '%(room)s' wurde von einem Verwalter BESTÄTIGT."
+
+
+#: indico/modules/rb/templates/emails/reservations/confirmation_email_to_manager.txt
 #: indico/modules/rb/templates/emails/reservations/confirmation_email_to_user.txt
 msgid "The following message was provided by the room manager:"
 msgstr "Die folgende Meldung wurde vom Raummanager bereitgestellt:"
+
+#: indico/modules/rb/templates/emails/reservations/confirmation_email_to_manager.txt
+#: indico/modules/rb/templates/emails/reservations/confirmation_email_to_user.txt
+msgid "The following message was provided by the resource manager:"
+msgstr "Die folgende Meldung wurde vom Ressourcenmanager bereitgestellt:"
+
 
 #: indico/modules/rb/templates/emails/reservations/confirmation_email_to_user.txt
 msgid "Your booking has been ACCEPTED."
@@ -18969,8 +19021,17 @@ msgid "There is a new pre-booking for your room."
 msgstr "Es gibt eine neue Vorreservierung für Ihren Raum."
 
 #: indico/modules/rb/templates/emails/reservations/creation_email_to_manager.txt
+msgid "There is a new pre-booking for your resource."
+msgstr "Es gibt eine neue Vorreservierung für Ihre Ressource."
+
+#: indico/modules/rb/templates/emails/reservations/creation_email_to_manager.txt
 msgid "There is a new booking for your room."
 msgstr "Es gibt eine neue Buchung für Ihren Raum."
+
+#: indico/modules/rb/templates/emails/reservations/creation_email_to_manager.txt
+msgid "There is a new booking for your resource."
+msgstr "Es gibt eine neue Buchung für Ihre Ressource."
+
 
 #: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
 #, python-format
@@ -18987,10 +19048,26 @@ msgstr "Der Konferenzraum %(room)s%(linebreak)s wurde für %(name)s%(linebreak)s
 #: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
 #, python-format
 msgid ""
+"The resource %(room)s%(linebreak)s has been pre-booked for "
+"%(name)s%(linebreak)s on %(date)s from %(from)s to %(to)s."
+msgstr "Die Ressource %(room)s%(linebreak)s wurde für %(name)s%(linebreak)s am %(date)s von %(from)s bis %(to)s vorreserviert."
+
+#: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
+#, python-format
+msgid ""
 "The conference room %(room)s%(linebreak)s has been pre-booked for "
 "%(name)s%(linebreak)s %(map)s from %(from)s to %(to)s between %(start)s and "
 "%(end)s."
 msgstr "Der Konferenzraum %(room)s%(linebreak)s wurde für %(name)s%(linebreak)s %(map)s von %(from)s bis %(to)s zwischen %(start)s und %(end)s vorreserviert."
+
+#: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
+#, python-format
+msgid ""
+"The resource %(room)s%(linebreak)s has been pre-booked for "
+"%(name)s%(linebreak)s %(map)s from %(from)s to %(to)s between %(start)s and "
+"%(end)s."
+msgstr "Die Ressource %(room)s%(linebreak)s wurde für %(name)s%(linebreak)s %(map)s von %(from)s bis %(to)s zwischen %(start)s und %(end)s vorreserviert."
+
 
 #: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
 #, python-format
@@ -19002,10 +19079,25 @@ msgstr "Der Konferenzraum %(room)s%(linebreak)s wurde für %(name)s%(linebreak)s
 #: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
 #, python-format
 msgid ""
+"The resource %(room)s%(linebreak)s has been booked for "
+"%(name)s%(linebreak)s on %(date)s from %(from)s to %(to)s."
+msgstr "Die Ressource %(room)s%(linebreak)s wurde für %(name)s%(linebreak)s am %(date)s von %(from)s bis %(to)s reserviert."
+
+#: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
+#, python-format
+msgid ""
 "The conference room %(room)s%(linebreak)s has been booked for "
 "%(name)s%(linebreak)s %(map)s from %(from)s to %(to)s between %(start)s and "
 "%(end)s."
 msgstr "Der Konferenzraum %(room)s%(linebreak)s wurde für %(name)s%(linebreak)s %(map)s von %(from)s bis %(to)s zwischen %(start)s und %(end)s vorreserviert."
+
+#: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
+#, python-format
+msgid ""
+"The resource %(room)s%(linebreak)s has been booked for "
+"%(name)s%(linebreak)s %(map)s from %(from)s to %(to)s between %(start)s and "
+"%(end)s."
+msgstr "Die Ressource %(room)s%(linebreak)s wurde für %(name)s%(linebreak)s %(map)s von %(from)s bis %(to)s zwischen %(start)s und %(end)s vorreserviert."
 
 #: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
 #, python-format
@@ -19022,10 +19114,24 @@ msgstr "Wenn Sie dieses Zimmer nicht benötigen, stornieren Sie bitte die Buchun
 
 #: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
 msgid ""
+"If you end up not needing this resource, please cancel the booking from the "
+"booking details so that the ressource can be booked by somebody else."
+msgstr "Wenn Sie diese Ressource nicht benötigen, stornieren Sie bitte die Buchung über die Buchungsdetails, damit die Ressource von jemand anderem gebucht werden kann."
+
+#: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
+msgid ""
 "Please be aware that in special (rare) cases the person responsible for this"
 " room may reject your booking. Should that happen you will be instantly "
 "notified by e-mail."
 msgstr "Bitte beachten Sie, dass in besonderen (seltenen) Fällen die für dieses Zimmer zuständige Person Ihre Buchung ablehnen kann. Sollte dies der Fall sein, werden Sie umgehend per E-Mail benachrichtigt."
+
+#: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
+msgid ""
+"Please be aware that in special (rare) cases the person responsible for this"
+" resource may reject your booking. Should that happen you will be instantly "
+"notified by e-mail."
+msgstr "Bitte beachten Sie, dass in besonderen (seltenen) Fällen die für diese Ressource zuständige Person Ihre Buchung ablehnen kann. Sollte dies der Fall sein, werden Sie umgehend per E-Mail benachrichtigt."
+
 
 #: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
 msgid "Note:"
@@ -19038,6 +19144,13 @@ msgid ""
 "acceptance/rejection information."
 msgstr "Ihre Vorausbuchung wird NOCH NICHT von einem Zimmermanager akzeptiert. Bitte beachten Sie, dass Vorausbuchungen von der Annahme oder Ablehnung abhängig sind. Erwarten Sie eine E-Mail mit Informationen zur Annahme/Ablehnung."
 
+#: indico/modules/rb/templates/emails/reservations/creation_email_to_user.txt
+msgid ""
+"Your pre-booking is NOT YET ACCEPTED by a resource manager. Please be aware that"
+" pre-bookings are subject to acceptance or rejection. Expect an e-mail with "
+"acceptance/rejection information."
+msgstr "Ihre Vorausbuchung wird NOCH NICHT von einem Ressourcenmanager akzeptiert. Bitte beachten Sie, dass Vorausbuchungen von der Annahme oder Ablehnung abhängig sind. Erwarten Sie eine E-Mail mit Informationen zur Annahme/Ablehnung."
+
 #: indico/modules/rb/templates/emails/reservations/modification_email_to_manager.txt
 #: indico/modules/rb/templates/emails/reservations/modification_email_to_user.txt
 #, python-format
@@ -19047,6 +19160,11 @@ msgstr "[%(room)s] Reservierung geändert (%(start)s)"
 #: indico/modules/rb/templates/emails/reservations/modification_email_to_manager.txt
 msgid "A booking in a room you manage has been MODIFIED."
 msgstr "Eine Buchung in einem von Ihnen verwalteten Raum wurde GEÄNDERT."
+
+#: indico/modules/rb/templates/emails/reservations/modification_email_to_manager.txt
+msgid "A booking for a resource you manage has been MODIFIED."
+msgstr "Eine Buchung einer von Ihnen verwalteten Ressource wurde GEÄNDERT."
+
 
 #: indico/modules/rb/templates/emails/reservations/modification_email_to_user.txt
 msgid "Your booking has been MODIFIED."
@@ -19064,6 +19182,13 @@ msgid ""
 "The date %(date)s from a booking that concerns one of your rooms has been "
 "CANCELLED by the user."
 msgstr "Das Datum %(date)s einer Buchung, die eines Ihrer Zimmer betrifft, wurde vom Benutzer storniert."
+
+#: indico/modules/rb/templates/emails/reservations/occurrence_cancellation_email_to_manager.txt
+#, python-format
+msgid ""
+"The date %(date)s from a booking that concerns one of your resources has been "
+"CANCELLED by the user."
+msgstr "Das Datum %(date)s einer Buchung, die eines Ihrer Ressourcen betrifft, wurde vom Benutzer storniert."
 
 #: indico/modules/rb/templates/emails/reservations/occurrence_cancellation_email_to_user.txt
 #, python-format
@@ -19083,11 +19208,24 @@ msgid ""
 "%(date)s."
 msgstr "Eine Reservierung wurde vom Verwalter des Raums '%(name)s' für den %(date)s ABGELEHNT."
 
+#: indico/modules/rb/templates/emails/reservations/occurrence_rejection_email_to_manager.txt
+#, python-format
+msgid ""
+"A booking has been REJECTED by the manager of the resource '%(name)s' for the "
+"%(date)s."
+msgstr "Eine Reservierung wurde vom Verwalter der Ressource '%(name)s' für den %(date)s ABGELEHNT."
+
 #: indico/modules/rb/templates/emails/reservations/occurrence_rejection_email_to_user.txt
 #, python-format
 msgid ""
 "Your booking has been REJECTED by the manager of the room for the %(date)s."
 msgstr "Ihre Buchung wurde vom Verwalter des Raums für den %(date)s ABGELEHNT."
+
+#: indico/modules/rb/templates/emails/reservations/occurrence_rejection_email_to_user.txt
+#, python-format
+msgid ""
+"Your booking has been REJECTED by the manager of the resource for the %(date)s."
+msgstr "Ihre Buchung wurde vom Verwalter der Ressource für den %(date)s ABGELEHNT."
 
 #: indico/modules/rb/templates/emails/reservations/rejection_email_to_manager.txt
 #: indico/modules/rb/templates/emails/reservations/rejection_email_to_user.txt
@@ -19100,9 +19238,18 @@ msgstr "[%(room)s] Abgelehnte Buchung (%(start)s)"
 msgid "A booking has been REJECTED by the manager of the room '%(name)s'."
 msgstr "Eine Buchung wurde vom Verwalter des Raums '%(name)s' ABGELEHNT."
 
+#: indico/modules/rb/templates/emails/reservations/rejection_email_to_manager.txt
+#, python-format
+msgid "A booking has been REJECTED by the manager of the resource '%(name)s'."
+msgstr "Eine Buchung wurde vom Verwalter der Ressource '%(name)s' ABGELEHNT."
+
 #: indico/modules/rb/templates/emails/reservations/rejection_email_to_user.txt
 msgid "Your booking has been REJECTED by the manager of the room."
 msgstr "Ihre Buchung wurde vom Verwalter des Raums ABGELEHNT."
+
+#: indico/modules/rb/templates/emails/reservations/rejection_email_to_user.txt
+msgid "Your booking has been REJECTED by the manager of the resource."
+msgstr "Ihre Buchung wurde vom Verwalter der Ressource ABGELEHNT."
 
 #: indico/modules/rb/templates/emails/reservations/reservation_info.txt
 msgid "For:"

@@ -6,11 +6,11 @@
 
 {% block email_body -%}
     {%- filter dedent -%}
-        {% trans room=reservation.room.full_name %}A booking in your room '{{ room }}' has been CONFIRMED by a room manager.{% endtrans %}
+        {% trans room=reservation.room.full_name %}A booking for your resource '{{ room }}' has been CONFIRMED by a resource manager.{% endtrans %}
 
         {%- if reason %}
 
-            {% trans %}The following message was provided by the room manager:{% endtrans %}
+            {% trans %}The following message was provided by the resource manager:{% endtrans %}
             {{ reason }}
         {%- endif -%}
     {%- endfilter -%}

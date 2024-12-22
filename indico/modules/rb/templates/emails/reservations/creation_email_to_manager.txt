@@ -16,9 +16,9 @@
 {% block email_body -%}
     {%- filter dedent -%}
         {% if prebooking -%}
-            {% trans %}There is a new pre-booking for your room.{% endtrans %}
+            {% trans %}There is a new pre-booking for your resource.{% endtrans %}
         {%- else -%}
-            {% trans %}There is a new booking for your room.{% endtrans %}
+            {% trans %}There is a new booking for your resource.{% endtrans %}
         {%- endif %}
 
         {% include 'rb/emails/reservations/reservation_info.txt' %}

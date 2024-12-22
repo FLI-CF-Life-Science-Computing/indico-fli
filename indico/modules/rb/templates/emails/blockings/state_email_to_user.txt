@@ -1,9 +1,9 @@
 {% extends 'rb/emails/base_email.txt' %}
 {% block subject -%}
     {% if blocked_room.state.name == 'accepted' -%}
-        {% trans %}Room blocking ACCEPTED{% endtrans %}
+        {% trans %}Resource blocking ACCEPTED{% endtrans %}
     {%- else -%}
-        {% trans %}Room blocking REJECTED{% endtrans %}
+        {% trans %}Resource blocking REJECTED{% endtrans %}
     {%- endif %}
 {%- endblock %}
 
@@ -13,9 +13,9 @@
 
 {% block body -%}
 {% if blocked_room.state.name == 'accepted' -%}
-    {% trans %}Your room blocking request has been ACCEPTED by a room manager.{% endtrans %}
+    {% trans %}Your resource blocking request has been ACCEPTED by a resource manager.{% endtrans %}
 {%- else -%}
-    {% trans %}Your room blocking request has been REJECTED by a room manager.{% endtrans %}
+    {% trans %}Your resource blocking request has been REJECTED by a resource manager.{% endtrans %}
 {%- endif %}
 
 {% trans %}Room:{% endtrans %} {{ blocked_room.room.full_name }}

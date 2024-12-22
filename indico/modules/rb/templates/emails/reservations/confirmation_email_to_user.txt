@@ -12,7 +12,7 @@
 
             {%- if reason %}
 
-                {% trans %}The following message was provided by the room manager:{% endtrans %}
+                {% trans %}The following message was provided by the resource manager:{% endtrans %}
                 {{ reason }}
             {%- endif -%}
         {%- endblock %}

@@ -1,6 +1,6 @@
 {% extends 'rb/emails/base_email.txt' %}
 
-{% block subject -%}{% trans %}Confirm room blockings{% endtrans %}{%- endblock %}
+{% block subject -%}{% trans %}Confirm resource blockings{% endtrans %}{%- endblock %}
 
 {% block header_recipient -%}
     {% trans name=owner.first_name -%}Dear {{ name }},{%- endtrans %}
@@ -9,18 +9,18 @@
 {% block body -%}
 {% if blocked_rooms | length > 1 -%}
     {% trans name=blocking.created_by_user.full_name -%}
-        {{ name }} has created a blocking for some rooms you manage.
+        {{ name }} has created a blocking for some resources you manage.
     {%- endtrans %}
 {%- else -%}
     {% trans name=blocking.created_by_user.full_name -%}
-        {{ name }} has created a blocking for a room you manage.
+        {{ name }} has created a blocking for a resource you manage.
     {%- endtrans %}
 {%- endif %}
 
 {% if blocked_rooms | length == 1 -%}
-    {%- trans %}Room:{% endtrans %} {{ blocked_rooms[0].room.full_name }}
+    {%- trans %}Resource:{% endtrans %} {{ blocked_rooms[0].room.full_name }}
 {%- else -%}
-    {%- trans -%}Rooms:{%- endtrans %}
+    {%- trans -%}Resources:{%- endtrans %}
     {% for blocked_room in blocked_rooms -%}
     {{ blocked_room.room.full_name }}
     {% endfor %}

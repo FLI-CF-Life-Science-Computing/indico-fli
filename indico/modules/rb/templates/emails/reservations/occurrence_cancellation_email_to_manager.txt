@@ -6,6 +6,6 @@
 
 {% block email_body -%}
     {% trans date=occurrence.start_dt | format_date('EEEE dd/MM/yyyy', locale='en_GB') -%}
-        The date {{ date }} from a booking that concerns one of your rooms has been CANCELLED by the user.
+        The date {{ date }} from a booking that concerns one of your resources has been CANCELLED by the user.
     {%- endtrans %}
 {%- endblock %}

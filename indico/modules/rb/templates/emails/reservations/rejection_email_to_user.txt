@@ -6,7 +6,7 @@
 
 {% block email_body -%}
     {%- filter dedent -%}
-        {% trans %}Your booking has been REJECTED by the manager of the room.{% endtrans %}
+        {% trans %}Your booking has been REJECTED by the manager of the resource.{% endtrans %}
 
         {% trans %}Rejection reason:{% endtrans %}
         {{ reservation.rejection_reason }}
